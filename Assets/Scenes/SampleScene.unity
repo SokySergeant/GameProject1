@@ -545,6 +545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 15
+  jumpPower: 10
+  currentEnergy: 0
 --- !u!114 &1908428077
 MonoBehaviour:
   m_ObjectHideFlags: 0
