@@ -14,25 +14,17 @@ public class PlayerMovementScript : MonoBehaviour
     Vector3 velocity;
     private bool jumping = false;
 
-    public float currentEnergy;
-    private float maxEnergy = 200f;
-    private float energyRate = 10f;
-    private float energyMultiplier = -1;
-
 
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        currentEnergy = maxEnergy;
     }
 
 
 
     void FixedUpdate()
     {
-        currentEnergy += energyRate * energyMultiplier;
-
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
 
@@ -69,11 +61,4 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
 
-    public void DepleteEnergy(){
-        energyMultiplier = -1;
-    }
-
-    public void IncreaseEnergy(){
-        energyMultiplier = 1;
-    }
 }
