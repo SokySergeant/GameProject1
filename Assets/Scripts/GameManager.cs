@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollWorldScript : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public float scrollSpeed;
+    private float speedMultiplier = 1f;
+    public float accelerationOverTime = 1f;
+    public float fallingSpeedMultiplier = 1.4f;
+
     public GameObject[] sections;
     private float offset;
 
     private GameObject currentSection = null;
     private GameObject newSection = null;
 
+    public PlayerMovement player;
 
 
-    void Start()
+
+    void Awake()
     {
         //get length of a section
         offset = sections[0].transform.localScale.z;
@@ -27,9 +33,18 @@ public class ScrollWorldScript : MonoBehaviour
 
     void Update()
     {
+        scrollSpeed += Time.deltaTime * accelerationOverTime; //increase scroll speed the longer the game is played
+
+        if(player.flying){
+            speedMultiplier = 1f;
+        }else{
+            speedMultiplier = fallingSpeedMultiplier;
+        }
+
+
         //move sections
-        currentSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * Time.deltaTime);
-        newSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * Time.deltaTime);
+        currentSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * speedMultiplier * Time.deltaTime);
+        newSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * speedMultiplier * Time.deltaTime);
     }
 
 

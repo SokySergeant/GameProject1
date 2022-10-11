@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,42 +13,78 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
 
     Vector3 velocity;
+    Vector3 moveVector;
+
+    [HideInInspector] public bool flying;
+
+    private float currentEnergy;
+    private float maxEnergy = 200f;
+    public float energyUsage = 1f;
+    public Slider energyBar;
 
 
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        currentEnergy = maxEnergy;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
 
-        velocity += gravity * Time.deltaTime;
-
-        Vector3 moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.deltaTime, 0f, 0f);
-        controller.Move(velocity * Time.deltaTime + moveVector);
-        
-        if (controller.isGrounded){
-            velocity = Vector3.ProjectOnPlane(velocity, gravityDir); // The sign of the normal doesn't matter.
+        if(flying && currentEnergy > 0f){
+            velocity = new Vector3(velocity.x, jumpPower, velocity.z);
+            currentEnergy -= energyUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
+        }else{
+            velocity = gravity; //constant gravity to act like gliding
         }
+
+        moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
+
+        energyBar.value = currentEnergy / maxEnergy;
+    }
+
+    private void Update()
+    {
+        controller.Move(velocity * Time.deltaTime + moveVector); //this is here for smoother movement
     }
 
 
 
     //get horizontal input
-    public void OnMove(InputValue input){
-        horizontalInput = input.Get<Vector2>();
+    public void OnMove(InputAction.CallbackContext input){
+        horizontalInput = input.ReadValue<Vector2>();
     }
 
 
 
-    public void OnJump(InputValue input){
-        if(controller.isGrounded){
-            Vector3 gravityDir = Physics.gravity.normalized;
-            velocity += -gravityDir * jumpPower;
+    public void OnJump(InputAction.CallbackContext input){
+        if(input.started || input.canceled){
+            flying = !flying;
         }
     }
+
+
+
+    //gain energy in light
+    void OnTriggerStay(Collider other){
+        if(other.gameObject.layer == LayerMask.NameToLayer("Light")){ //if inside light
+            Vector3 lightSourcePos = other.transform.parent.transform.position; //get position of light source
+            Vector3 dir = transform.position - lightSourcePos; //get vector from lightsource to player
+
+            RaycastHit hit;
+            if(Physics.Raycast(lightSourcePos, dir, out hit)){ //shoot a ray towards the player
+                if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){ //check if nothing is obstructing the space between the lightsource and player, meaning nothing is creating shade
+                    currentEnergy += energyUsage * Time.fixedDeltaTime;
+                    currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy); //clamp currentEnergy so it doesn't go above max
+                }
+            }
+            
+
+        }
+    }
+
 }
