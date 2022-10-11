@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class newSectionTriggerScript : MonoBehaviour
+public class NewSectionTriggerScript : MonoBehaviour
 {
     public delegate void OnNewSectionTriggerEnter();
     public static event OnNewSectionTriggerEnter onNewSectionTriggerEnter;

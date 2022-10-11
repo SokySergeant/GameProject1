@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class playerMovementScript : MonoBehaviour
+public class PlayerMovementScript : MonoBehaviour
 {
     public float playerSpeed = 5f;
     public float jumpPower = 10f;
