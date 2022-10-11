@@ -20,15 +20,15 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
 
-        velocity += gravity * Time.deltaTime;
+        velocity += gravity * Time.fixedDeltaTime;
 
-        Vector3 moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.deltaTime, 0f, 0f);
-        controller.Move(velocity * Time.deltaTime + moveVector);
+        Vector3 moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
+        controller.Move(velocity * Time.fixedDeltaTime + moveVector);
         
         if (controller.isGrounded){
             velocity = Vector3.ProjectOnPlane(velocity, gravityDir); // The sign of the normal doesn't matter.
