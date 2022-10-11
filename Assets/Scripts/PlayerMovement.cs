@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
                     currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy); //clamp currentEnergy so it doesn't go above max
                 }
             }
-            
+
 
         }
     }
