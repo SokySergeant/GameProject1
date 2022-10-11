@@ -12,30 +12,29 @@ public class PlayerMovementScript : MonoBehaviour
     private CharacterController controller;
 
     Vector3 velocity;
-    private bool jumping = false;
 
 
 
-    void Start()
+    private void Start()
     {
         controller = GetComponent<CharacterController>();
     }
 
 
 
-    void FixedUpdate()
+    private void Update()
     {
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
 
-        if (controller.isGrounded && !jumping){
+        velocity += gravity * Time.deltaTime;
+
+        Vector3 moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.deltaTime, 0f, 0f);
+        controller.Move(velocity * Time.deltaTime + moveVector);
+        
+        if (controller.isGrounded){
             velocity = Vector3.ProjectOnPlane(velocity, gravityDir); // The sign of the normal doesn't matter.
         }
-
-        velocity += gravity * Time.fixedDeltaTime;
-
-        Vector3 moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
-        controller.Move(velocity * Time.fixedDeltaTime + moveVector);
     }
 
 
@@ -49,16 +48,8 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void OnJump(InputValue input){
         if(controller.isGrounded){
-            StartCoroutine(Jump());
+            Vector3 gravityDir = Physics.gravity.normalized;
+            velocity += -gravityDir * jumpPower;
         }
     }
-
-    private IEnumerator Jump(){
-        jumping = true;
-        velocity += Vector3.up * jumpPower;
-        yield return new WaitForFixedUpdate(); //Waiting for fixed update so that it doesn't reset velocity since the player is still touching ground.
-        jumping = false;
-    }
-
-
 }
