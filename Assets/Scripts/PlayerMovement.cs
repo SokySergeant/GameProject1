@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovementScript : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 5f;
     public float jumpPower = 10f;
@@ -15,12 +15,10 @@ public class PlayerMovementScript : MonoBehaviour
 
 
 
-    private void Start()
+    private void Awake()
     {
         controller = GetComponent<CharacterController>();
     }
-
-
 
     private void Update()
     {
