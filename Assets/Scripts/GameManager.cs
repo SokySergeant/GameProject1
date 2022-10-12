@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         offset = sections[0].transform.localScale.z;
 
         //whenever the player enters a new section, spawn another section ahead of it and delete the previous one
-        NewSectionTriggerScript.onNewSectionTriggerEnter += SpawnSection;
+        SegmentTrigger.onSegmentTriggerEnter += SpawnSection;
         HpScript.onHit += OnHit;
         HpScript.onDeath += OnDeath;
         SpawnSection();
