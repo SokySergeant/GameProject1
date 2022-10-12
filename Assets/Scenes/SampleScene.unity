@@ -895,10 +895,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae350485963d0a48aac16a34a2d8ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
+  playerSpeed: 5
   jumpPower: 20
   flying: 0
-  energyUsage: 30
+  energyUsage: 200
   energyBar: {fileID: 873737989}
 --- !u!114 &1908428077
 MonoBehaviour:
