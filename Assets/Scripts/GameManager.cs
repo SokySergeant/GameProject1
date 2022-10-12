@@ -5,9 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public float scrollSpeed;
-    private float speedMultiplier = 1f;
+    private float scrollSpeedMultiplier = 1f;
     public float accelerationOverTime = 1f;
     public float fallingSpeedMultiplier = 1.4f;
+    public float scrollSpeedMultiplierOnHit = 0.6f;
 
     public GameObject[] sections;
     private float offset;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     private GameObject newSection = null;
 
     public PlayerMovement player;
+
+    private bool canScroll = true;
 
 
 
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour
 
         //whenever the player enters a new section, spawn another section ahead of it and delete the previous one
         NewSectionTriggerScript.onNewSectionTriggerEnter += SpawnSection;
+        HpScript.onHit += OnHit;
+        HpScript.onDeath += OnDeath;
         SpawnSection();
     }
 
@@ -36,15 +41,17 @@ public class GameManager : MonoBehaviour
         scrollSpeed += Time.deltaTime * accelerationOverTime; //increase scroll speed the longer the game is played
 
         if(player.flying){
-            speedMultiplier = 1f;
+            scrollSpeedMultiplier = 1f;
         }else{
-            speedMultiplier = fallingSpeedMultiplier;
+            scrollSpeedMultiplier = fallingSpeedMultiplier;
         }
 
 
         //move sections
-        currentSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * speedMultiplier * Time.deltaTime);
-        newSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * speedMultiplier * Time.deltaTime);
+        if(canScroll){
+            currentSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * scrollSpeedMultiplier * Time.deltaTime);
+            newSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * scrollSpeedMultiplier * Time.deltaTime);
+        }
     }
 
 
@@ -62,5 +69,18 @@ public class GameManager : MonoBehaviour
         //create new section ahead of the current one
         newSection = Instantiate(sections[Random.Range(0, sections.Length)], new Vector3(0f, 0f, currentSection.transform.position.z + offset), Quaternion.identity);
     
+    }
+
+
+
+    //decrease scroll speed whenever the player gets hit
+    private void OnHit(){
+        scrollSpeed *= scrollSpeedMultiplierOnHit;
+    }
+
+    //stop movement on death
+    private void OnDeath(){
+        canScroll = false;
+        player.enabled = false;
     }
 }
