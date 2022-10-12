@@ -65,14 +65,20 @@ public class EnvironmentData : ScriptableObject
         WeightCurve.AddKey(key);
     }
 
-    public int RandomSegmentIndex()
+    public int RandomProfileIndex()
     {
         return (int)WeightCurve.Evaluate(Random.Range(0f, 1f));
+    }
+
+    public SegmentProfile RandomProfile()
+    {
+        int profileIndex = RandomProfileIndex();
+        return profileIndex >= 0 ? SegmentProfiles[profileIndex] : null;
     }
     
     public GameObject RandomSegmentPrefab()
     {
-        int profileIndex = RandomSegmentIndex();
+        int profileIndex = RandomProfileIndex();
         return profileIndex >= 0 ? SegmentProfiles[profileIndex].Prefab : null;
     }
 }
