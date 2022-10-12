@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     private bool canScroll = true;
 
+    public GameObject exitBtn;
+
+    private bool isPaused = false;
+
 
 
     void Awake()
@@ -32,6 +38,9 @@ public class GameManager : MonoBehaviour
         HpScript.onHit += OnHit;
         HpScript.onDeath += OnDeath;
         SpawnSection();
+
+        //Reset time scale incase the user previously exited through the main menu
+        Time.timeScale = 1f;
     }
 
 
@@ -82,5 +91,33 @@ public class GameManager : MonoBehaviour
     private void OnDeath(){
         canScroll = false;
         player.enabled = false;
+
+        //show exit button
+        exitBtn.SetActive(true);
+    }
+
+
+
+    //on death button functions 
+    public void Exit(){
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
+
+    //pause menu
+    public void OnPause(InputAction.CallbackContext input){
+        if(isPaused){
+            isPaused = false;
+            player.enabled = true;
+            exitBtn.SetActive(false);
+            Time.timeScale = 1f;
+        }else{
+            isPaused = true;
+            player.enabled = false;
+            exitBtn.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        
     }
 }
