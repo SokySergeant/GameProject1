@@ -12,22 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7654cfea1761774428114a9cc91f962f, type: 3}
   m_Name: EnvironmentData
   m_EditorClassIdentifier: 
+  Name: Environment
   SegmentProfiles:
   - Prefab: {fileID: 7952378635840142060, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
     Segment: {fileID: 7819912003469977634, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
-    Probability: 0.5
+    Weight: 1
   - Prefab: {fileID: 7952378635840142060, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
     Segment: {fileID: 7819912003469977634, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
-    Probability: 0.5
-  ProbabilitySum: 0.5
-  ProbabilityCurve:
+    Weight: 0.5
+  - Prefab: {fileID: 7952378635840142060, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
+    Segment: {fileID: 7819912003469977634, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
+    Weight: 0.5
+  WeightSum: 2
+  WeightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1.5
+      value: 2
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2
+      value: 2
+      inSlope: Infinity
+      outSlope: Infinity
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
