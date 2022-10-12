@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public float scrollSpeed;
+    public float maxScrollSpeed = 200f;
     private float scrollSpeedMultiplier = 1f;
     public float accelerationOverTime = 1f;
     public float fallingSpeedMultiplier = 1.4f;
@@ -47,7 +48,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        scrollSpeed += Time.deltaTime * accelerationOverTime; //increase scroll speed the longer the game is played
+        if(scrollSpeed < maxScrollSpeed){
+            scrollSpeed += Time.deltaTime * accelerationOverTime; //increase scroll speed the longer the game is played
+        }
 
         if(player.flying){
             scrollSpeedMultiplier = 1f;
