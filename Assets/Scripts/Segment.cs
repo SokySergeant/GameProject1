@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class PathSection : MonoBehaviour
+public class Segment : MonoBehaviour
 {
     public Transform[] EntryPoints;
     public Transform[] ExitPoints;
