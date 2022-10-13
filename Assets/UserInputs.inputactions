@@ -64,17 +64,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "754b37de-6dbf-4871-ab04-5758cabed3d3",
-                    "path": "<Gamepad>/dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "WASD",
                     "id": "00ca640b-d935-4593-8157-c05846ea39b3",
                     "path": "Dpad",
@@ -196,6 +185,39 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "AdaptiveControllerLR",
+                    "id": "5462dcd2-c071-44ed-a297-7e60786bd3ff",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "0abf125b-1e11-492c-a841-1a85a9a2bc3a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "1b898d1e-a8ed-4bbf-b4e2-7e3f6e77ad90",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
@@ -297,7 +319,7 @@
                 {
                     "name": "",
                     "id": "411e96e9-7d97-49f2-a1fd-07492174ba74",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
