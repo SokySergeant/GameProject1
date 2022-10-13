@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: event:/Hoverboard/Engine/EngineState
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   Path: FMOD Assets/GP1project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
@@ -23,6 +24,8 @@ MonoBehaviour:
   Exists: 1
 --- !u!114 &-6152456352535729392
 =======
+=======
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
   Path: event:/Hoverboard/Engine/EngineState
   Guid:
     Data1: 1489032823
@@ -40,6 +43,9 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 0
 --- !u!114 &-6547125672563067496
+<<<<<<< HEAD
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
+=======
 >>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,7 +62,11 @@ MonoBehaviour:
   Name: Music
   StudioPath: bank:/Music
 <<<<<<< HEAD
+<<<<<<< HEAD
   lastModified: 638012674550564143
+=======
+  lastModified: 638012652754022632
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
 =======
   lastModified: 638012652754022632
 >>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
@@ -64,6 +74,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1057216
   Exists: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!114 &-5454093088756721594
 MonoBehaviour:
@@ -106,6 +117,9 @@ MonoBehaviour:
     Value: 482240
   Exists: 1
 --- !u!114 &-96545386082885536
+=======
+--- !u!114 &-3686779918912619798
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
 =======
 --- !u!114 &-3686779918912619798
 >>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
@@ -198,8 +212,13 @@ MonoBehaviour:
   - {fileID: -1838215326399123899}
   StringsBanks:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: -5454093088756721594}
   cacheTime: 638012674550564143
+=======
+  - {fileID: -3506014558489384678}
+  cacheTime: 638012688796651754
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
 =======
   - {fileID: -3506014558489384678}
   cacheTime: 638012688796651754
