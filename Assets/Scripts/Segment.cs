@@ -9,7 +9,25 @@ public class Segment : MonoBehaviour
     public Transform[] EntryPoints;
     public Transform[] ExitPoints;
 
-    [HideInInspector] public Vector3[] PathPoints = new Vector3[0];
+    [NonSerialized] public Segment[] EntrySegments;
+    [NonSerialized] public Segment[] ExitSegments;
+
+    [NonSerialized] public bool IsExpanded = false;
     
     public Prop[] Props;
+
+    private void Awake()
+    {
+        SegmentManager.OnMoveSegments += Move;
+    }
+
+    private void OnDestroy()
+    {
+        SegmentManager.OnMoveSegments -= Move;
+    }
+
+    private void Move(Vector3 motion)
+    {
+        transform.position += motion;
+    }
 }
