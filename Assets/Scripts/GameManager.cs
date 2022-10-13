@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         HpScript.onHit += OnHit;
         HpScript.onDeath += OnDeath;
 
-        //Reset time scale incase the user previously exited through the main menu
+        //Reset time scale incase the user previously exited through the pause menu
         Time.timeScale = 1f;
     }
 
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
     
     //on death button functions 
     public void Exit(){
+        player.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SceneManager.LoadScene("MainMenu");
     }
     
@@ -85,11 +86,13 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             player.enabled = true;
             exitBtn.SetActive(false);
+            player.hoverEngine.start();
             Time.timeScale = 1f;
         }else{
             isPaused = true;
             player.enabled = false;
             exitBtn.SetActive(true);
+            player.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             Time.timeScale = 0f;
         }
         
