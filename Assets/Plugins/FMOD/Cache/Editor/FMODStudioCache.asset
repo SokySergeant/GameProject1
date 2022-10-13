@@ -43,7 +43,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638012669720629274
+  lastModified: 638012652754022632
   FileSizes:
   - Name: Desktop
     Value: 1057216
@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638012669720389914
+  lastModified: 638012688796651754
   FileSizes:
   - Name: Desktop
     Value: 1090
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638012669720379939
+  lastModified: 638012652753912915
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -138,7 +138,7 @@ MonoBehaviour:
   - {fileID: -1838215326399123899}
   StringsBanks:
   - {fileID: -3506014558489384678}
-  cacheTime: 638012669720823854
+  cacheTime: 638012688796651754
   cacheVersion: 131593
 --- !u!114 &3231460569757900281
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Hoverboard.bank
   Name: Hoverboard
   StudioPath: bank:/Hoverboard
-  lastModified: 638012669720823854
+  lastModified: 638012688796611851
   FileSizes:
   - Name: Desktop
     Value: 651776
