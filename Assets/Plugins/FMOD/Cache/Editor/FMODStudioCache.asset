@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638011985368065283
+  lastModified: 638012600500502993
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -35,10 +35,10 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638011985416122303
+  lastModified: 638012600500792195
   FileSizes:
   - Name: Desktop
-    Value: 3838112
+    Value: 1057216
   Exists: 1
 --- !u!114 &-5454093088756721594
 MonoBehaviour:
@@ -55,11 +55,83 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638011985368095203
+  lastModified: 638012600500512951
   FileSizes:
   - Name: Desktop
-    Value: 818
+    Value: 988
   Exists: 1
+--- !u!114 &-1316121617599499533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Hoverboard.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Assets/GP1project/Build/Desktop/Hoverboard.bank
+  Name: Hoverboard
+  StudioPath: bank:/Hoverboard
+  lastModified: 638012600500987830
+  FileSizes:
+  - Name: Desktop
+    Value: 482240
+  Exists: 1
+--- !u!114 &-96545386082885536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EngineState/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1646383057
+    data2: 4294268401
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-12450121035800806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hoverboard/Engine/EngineState
+  m_EditorClassIdentifier: 
+  Path: event:/Hoverboard/Engine/EngineState
+  Guid:
+    Data1: 1489032823
+    Data2: 1139436565
+    Data3: 127345071
+    Data4: 700688455
+  Banks:
+  - {fileID: -1316121617599499533}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -96545386082885536}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,14 +148,16 @@ MonoBehaviour:
   - {fileID: -5454093088756721594}
   - {fileID: -8640966517114218844}
   - {fileID: -6152456352535729392}
+  - {fileID: -1316121617599499533}
   EditorEvents:
   - {fileID: 2092848607464110354}
+  - {fileID: -12450121035800806}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8640966517114218844}
   StringsBanks:
   - {fileID: -5454093088756721594}
-  cacheTime: 638011985416122303
+  cacheTime: 638012600500987830
   cacheVersion: 131593
 --- !u!114 &2092848607464110354
 MonoBehaviour:
@@ -107,8 +181,8 @@ MonoBehaviour:
   - {fileID: -6152456352535729392}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 260400
+  Length: 81162

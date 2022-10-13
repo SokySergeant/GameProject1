@@ -22,12 +22,18 @@ public class PlayerMovement : MonoBehaviour
     public float energyUsage = 1f;
     public Slider energyBar;
 
+    private FMOD.Studio.EventInstance HoverEngine;
 
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         currentEnergy = maxEnergy;
+
+        //Audio
+        HoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
+        HoverEngine.start();
+        HoverEngine.setParameterByName("RPM", 0.8f);
     }
 
     private void FixedUpdate()
@@ -45,6 +51,12 @@ public class PlayerMovement : MonoBehaviour
         moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
 
         energyBar.value = currentEnergy / maxEnergy;
+
+        if(horizontalInput.x != 0f){
+            HoverEngine.setParameterByName("RPM", 1f);
+        }else{
+            HoverEngine.setParameterByName("RPM", 0.8f);
+        }
     }
 
     private void Update()
