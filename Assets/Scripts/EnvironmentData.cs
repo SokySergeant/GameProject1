@@ -20,13 +20,17 @@ public class EnvironmentData : ScriptableObject
         [Tooltip("Segment Prefab used for instantiation.")]
         public GameObject Prefab;
         [Tooltip("Segment MonoBehaviour attached to the Segment Prefab.")]
-        public Segment Segment;
+        [ReadOnly] public Segment Segment;
         [Tooltip("Weight used when selecting a random Segment from this Environment. Weights are normalized.")]
         [Range(0f, 1f)] public float Weight = 0.5f;
 
         public bool Validate()
         {
-            if (!Prefab) return false;
+            if (!Prefab)
+            {
+                Segment = null;
+                return false;
+            }
 
             if (!Prefab.TryGetComponent(out Segment segment))
             {
