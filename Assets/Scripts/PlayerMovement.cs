@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float energyUsage = 1f;
     public Slider energyBar;
 
-    private FMOD.Studio.EventInstance HoverEngine;
+    public FMOD.Studio.EventInstance hoverEngine;
 
     private Animator animator;
 
@@ -34,9 +34,8 @@ public class PlayerMovement : MonoBehaviour
         currentEnergy = maxEnergy;
 
         //Audio
-        HoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
-        HoverEngine.start();
-        HoverEngine.setParameterByName("RPM", 0.8f);
+        hoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
+        hoverEngine.start();
     }
 
     private void FixedUpdate()
@@ -57,9 +56,9 @@ public class PlayerMovement : MonoBehaviour
 
 
         if(horizontalInput.x != 0f){
-            HoverEngine.setParameterByName("RPM", 1f);
+            hoverEngine.setParameterByName("RPM", 1f);
         }else{
-            HoverEngine.setParameterByName("RPM", 0.8f);
+            hoverEngine.setParameterByName("RPM", 0.8f);
         }
 
         animator.SetBool("Flying", flying);
