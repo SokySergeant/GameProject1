@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Environment
   SegmentProfiles:
-  - Prefab: {fileID: 7952378635840142060, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
-    Segment: {fileID: 7819912003469977634, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
+  - Prefab: {fileID: 572760412507318831, guid: 1a98ac49f791cd34cb3f545ee23dfecb, type: 3}
+    Segment: {fileID: 7188763832651854591, guid: 1a98ac49f791cd34cb3f545ee23dfecb, type: 3}
     Weight: 1
   - Prefab: {fileID: 7952378635840142060, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}
     Segment: {fileID: 7819912003469977634, guid: 0f87487226ea15f4789a5d8519e344f5, type: 3}

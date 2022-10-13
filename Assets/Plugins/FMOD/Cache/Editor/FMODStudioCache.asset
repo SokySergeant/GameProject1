@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: event:/Hoverboard/Engine/EngineState
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  Path: FMOD Assets/GP1project/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638012674550444457
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &-6152456352535729392
+=======
+=======
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
   Path: event:/Hoverboard/Engine/EngineState
   Guid:
     Data1: 1489032823
@@ -29,6 +43,10 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 0
 --- !u!114 &-6547125672563067496
+<<<<<<< HEAD
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
+=======
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,12 +61,68 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638012681824673481
+<<<<<<< HEAD
+<<<<<<< HEAD
+  lastModified: 638012674550564143
+=======
+  lastModified: 638012652754022632
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
+=======
+  lastModified: 638012652754022632
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
   FileSizes:
   - Name: Desktop
     Value: 1057216
   Exists: 1
+<<<<<<< HEAD
+<<<<<<< HEAD
+--- !u!114 &-5454093088756721594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Assets/GP1project/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638012674550474659
+  FileSizes:
+  - Name: Desktop
+    Value: 988
+  Exists: 1
+--- !u!114 &-1316121617599499533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Hoverboard.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Assets/GP1project/Build/Desktop/Hoverboard.bank
+  Name: Hoverboard
+  StudioPath: bank:/Hoverboard
+  lastModified: 638012674550434483
+  FileSizes:
+  - Name: Desktop
+    Value: 482240
+  Exists: 1
+--- !u!114 &-96545386082885536
+=======
 --- !u!114 &-3686779918912619798
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
+=======
+--- !u!114 &-3686779918912619798
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +161,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638012681922630683
+  lastModified: 638012688796651754
   FileSizes:
   - Name: Desktop
     Value: 1090
@@ -107,7 +181,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638012681824593716
+  lastModified: 638012652753912915
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -137,8 +211,18 @@ MonoBehaviour:
   MasterBanks:
   - {fileID: -1838215326399123899}
   StringsBanks:
+<<<<<<< HEAD
+<<<<<<< HEAD
+  - {fileID: -5454093088756721594}
+  cacheTime: 638012674550564143
+=======
   - {fileID: -3506014558489384678}
-  cacheTime: 638012681922630683
+  cacheTime: 638012688796651754
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
+=======
+  - {fileID: -3506014558489384678}
+  cacheTime: 638012688796651754
+>>>>>>> c08b23a1a370632b803794b030a427b1ca33c89a
   cacheVersion: 131593
 --- !u!114 &3231460569757900281
 MonoBehaviour:
@@ -179,7 +263,7 @@ MonoBehaviour:
   Path: FMOD Assets/GP1project/Build/Desktop/Hoverboard.bank
   Name: Hoverboard
   StudioPath: bank:/Hoverboard
-  lastModified: 638012681922601050
+  lastModified: 638012688796611851
   FileSizes:
   - Name: Desktop
     Value: 651776
