@@ -71,7 +71,7 @@ public class EnvironmentData : ScriptableObject
 
     public int RandomProfileIndex()
     {
-        return (int)WeightCurve.Evaluate(Random.Range(0f, 1f));
+        return (int)WeightCurve.Evaluate(Random.Range(0f, WeightSum));
     }
 
     public SegmentProfile RandomProfile()
