@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public float energyUsage = 1f;
     public Slider energyBar;
 
-
     private FMOD.Studio.EventInstance solarEngine;
     public FMOD.Studio.EventInstance hoverEngine;
 
@@ -34,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         currentEnergy = maxEnergy;
-
 
         hoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
         hoverEngine.start();
