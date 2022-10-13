@@ -22,11 +22,14 @@ public class PlayerMovement : MonoBehaviour
     public float energyUsage = 1f;
     public Slider energyBar;
 
+    private Animator animator;
+
 
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
         currentEnergy = maxEnergy;
     }
 
@@ -45,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
         moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
 
         energyBar.value = currentEnergy / maxEnergy;
+
+        animator.SetBool("Flying", flying);
+        animator.SetFloat("Horizontal", horizontalInput.x);
+        animator.SetBool("Grounded", controller.isGrounded);
     }
 
     private void Update()
