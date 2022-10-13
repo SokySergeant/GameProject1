@@ -22,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public float energyUsage = 1f;
     public Slider energyBar;
 
-    private FMOD.Studio.EventInstance HoverEngine;
+    private FMOD.Studio.EventInstance hoverEngine;
+    private FMOD.Studio.EventInstance solarEngine;
 
     private Animator animator;
 
@@ -33,10 +34,13 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         currentEnergy = maxEnergy;
 
-        //Audio
-        HoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
-        HoverEngine.start();
-        HoverEngine.setParameterByName("RPM", 0.8f);
+        //Audio Hoverboard
+        hoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
+        hoverEngine.start();
+        hoverEngine.setParameterByName("RPM", 0.8f);
+
+        //Audio SolarEngine
+        solarEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/SolarPowerFly");
     }
 
     private void FixedUpdate()
@@ -49,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             currentEnergy -= energyUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
         }else{
             velocity = gravity; //constant gravity to act like gliding
+            solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
         moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
@@ -57,15 +62,14 @@ public class PlayerMovement : MonoBehaviour
 
 
         if(horizontalInput.x != 0f){
-            HoverEngine.setParameterByName("RPM", 1f);
+            hoverEngine.setParameterByName("RPM", 1f);
         }else{
-            HoverEngine.setParameterByName("RPM", 0.8f);
+            hoverEngine.setParameterByName("RPM", 0.8f);
         }
 
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);
         animator.SetBool("Grounded", controller.isGrounded);
-
     }
 
     private void Update()
@@ -85,6 +89,13 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(InputAction.CallbackContext input){
         if(input.started || input.canceled){
             flying = !flying;
+        }
+
+        if(input.started && currentEnergy > 0f){
+            solarEngine.start();
+            solarEngine.setParameterByName("RPM SP", 0.2f);
+        }else if(input.canceled && currentEnergy > 0f){
+            solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
