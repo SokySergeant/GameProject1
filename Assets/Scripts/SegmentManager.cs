@@ -20,8 +20,10 @@ public class SegmentManager : MonoBehaviour
         SegmentTrigger.OnSegmentEnter += OnSegmentEnter;
     }
 
+    int segmentsPassed = -1;
     private void OnSegmentEnter(Segment segment)
     {
+        Debug.Log("Segment: " + ++segmentsPassed);
         Segment oldSegment = CurrentSegment;
         CurrentSegment = segment;
         
