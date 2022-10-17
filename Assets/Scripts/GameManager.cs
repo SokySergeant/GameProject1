@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public GameObject player;
     private PlayerMovement playerMovement;
-    private HpScript playerHp;
+    [HideInInspector] public HpScript playerHp;
 
     private bool canScroll = true;
 
