@@ -567,7 +567,7 @@ MonoBehaviour:
   accelerationOverTime: 1
   fallingSpeedMultiplier: 1.4
   scrollSpeedMultiplierOnHit: 1
-  player: {fileID: 1908428076}
+  player: {fileID: 1908428071}
   exitBtn: {fileID: 578224856}
   _segmentManager: {fileID: 522762941}
   _spawnSegment: {fileID: 2111583953}
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae350485963d0a48aac16a34a2d8ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 25
+  playerSpeed: 50
   jumpPower: 50
   flying: 0
   energyUsage: 200

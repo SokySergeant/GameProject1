@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public float fallingSpeedMultiplier = 1.4f;
     public float scrollSpeedMultiplierOnHit = 0.6f;
 
-    public GameObject player;
+    [HideInInspector] public GameObject player;
     private PlayerMovement playerMovement;
     private HpScript playerHp;
 
@@ -29,10 +29,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         playerHp = player.GetComponent<HpScript>();
 
         _segmentManager.ExpandSegment(_spawnSegment);
+
+        
         
         //whenever the player enters a new section, spawn another section ahead of it and delete the previous one
         HpScript.onHit += OnHit;
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
         }
 
         if(playerMovement.flying){
+            Debug.Log(playerMovement, playerMovement);
             scrollSpeedMultiplier = 1f;
         }else{
             scrollSpeedMultiplier = fallingSpeedMultiplier;
@@ -65,6 +69,8 @@ public class GameManager : MonoBehaviour
         }
     }
     
+
+
     //decrease scroll speed whenever the player gets hit
     private void OnHit(){
         scrollSpeed *= scrollSpeedMultiplierOnHit;
@@ -102,4 +108,7 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+
+
 }

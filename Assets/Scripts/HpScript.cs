@@ -17,6 +17,7 @@ public class HpScript : MonoBehaviour
     public TextMeshProUGUI hpText;
 
 
+
     void Awake()
     {
         currentHp = maxHp;
@@ -32,15 +33,10 @@ public class HpScript : MonoBehaviour
             //subtract hp
             ChangeHp(-1);
 
-            if(currentHp <= 0){ //if hp is below or equal to 0, the player died
-                hpText.text = "HP: X";
-                onDeath?.Invoke();
-            }else{
-                //destroy obstacle so player can continue ahead after getting hit
-                other.gameObject.GetComponent<Obstacle>().BlowUp();
-                hpText.text = "HP: " + currentHp;
-                onHit?.Invoke();
-            }
+            //destroy obstacle so player can continue ahead after getting hit
+            other.gameObject.GetComponent<Obstacle>().BlowUp();
+            hpText.text = "HP: " + currentHp;
+            onHit?.Invoke();
         }
     }
 
@@ -48,9 +44,21 @@ public class HpScript : MonoBehaviour
 
     public void ChangeHp(int hp){
         currentHp += hp;
-        
+
+        if(currentHp <= 0){ //if hp is below or equal to 0, the player died
+            hpText.text = "HP: X";
+            onDeath?.Invoke();
+        }
     }
     
+
+
+    //
+    void OnDisable()
+    {
+        onHit = null;
+        onDeath = null;
+    }
 
     
 }

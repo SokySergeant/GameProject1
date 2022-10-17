@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
             solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
-        moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
+        moveVector = new Vector3(horizontalInput.x * playerSpeed, 0f, 0f);
 
         energyBar.value = currentEnergy / maxEnergy;
 
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        controller.Move(velocity * Time.deltaTime + moveVector); //this is here for smoother movement
+        controller.Move(velocity * Time.deltaTime + moveVector * Time.deltaTime); //this is here for smoother movement
     }
 
 
