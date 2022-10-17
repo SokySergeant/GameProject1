@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower = 10f;
     private Vector2 horizontalInput;
 
-    private CharacterController controller;
+    public CharacterController controller;
 
     Vector3 velocity;
     Vector3 moveVector;
