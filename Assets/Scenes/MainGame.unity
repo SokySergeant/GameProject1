@@ -328,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 21940e3185f3ccd4c99535e5b829d80d, type: 3}
       propertyPath: m_Name
-      value: Skate_motor_update (1)
+      value: Board
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21940e3185f3ccd4c99535e5b829d80d, type: 3}
@@ -1411,7 +1411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59b0f532a5f46374bb1a060f533e301e, type: 3}
       propertyPath: m_Name
-      value: solar_surfer
+      value: Character
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59b0f532a5f46374bb1a060f533e301e, type: 3}
       propertyPath: m_IsActive

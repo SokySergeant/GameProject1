@@ -30,7 +30,7 @@ public class HpScript : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Obstacle")){
 
             //subtract hp
-            currentHp--;
+            ChangeHp(-1);
 
             if(currentHp <= 0){ //if hp is below or equal to 0, the player died
                 hpText.text = "HP: X";
@@ -42,6 +42,13 @@ public class HpScript : MonoBehaviour
                 onHit?.Invoke();
             }
         }
+    }
+
+
+
+    public void ChangeHp(int hp){
+        currentHp += hp;
+        
     }
     
 
