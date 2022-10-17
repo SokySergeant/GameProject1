@@ -67,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
 
         //
         currentEnergy -= energyUsage * Time.fixedDeltaTime;
+        if(currentEnergy <= 0f){
+            currentEnergy = 0f;
+        }
 
         //animations parameters
         animator.SetBool("Flying", flying);
