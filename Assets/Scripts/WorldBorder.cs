@@ -9,7 +9,9 @@ public class WorldBorder : MonoBehaviour
     void OnTriggerEnter(Collider other){
         //collision with the player
         if(other.gameObject.layer == LayerMask.NameToLayer("Player")){
-            other.gameObject.transform.position = spawnPos.position;
+            other.GetComponent<CharacterController>().enabled = false;
+            other.transform.position = spawnPos.position;
+            other.GetComponent<CharacterController>().enabled = true;
         }
     }
 }
