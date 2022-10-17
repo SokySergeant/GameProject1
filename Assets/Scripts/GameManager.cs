@@ -54,12 +54,11 @@ public class GameManager : MonoBehaviour
         }
 
         if(playerMovement.flying){
+            Debug.Log(playerMovement, playerMovement);
             scrollSpeedMultiplier = 1f;
         }else{
             scrollSpeedMultiplier = fallingSpeedMultiplier;
         }
-        
-        Debug.Log(playerMovement.controller.isGrounded);
 
 
         //move sections
