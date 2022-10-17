@@ -1,66 +1,114 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public float scrollSpeed;
-    private float speedMultiplier = 1f;
+    public float maxScrollSpeed = 200f;
+    private float scrollSpeedMultiplier = 1f;
     public float accelerationOverTime = 1f;
     public float fallingSpeedMultiplier = 1.4f;
+    public float scrollSpeedMultiplierOnHit = 0.6f;
 
-    public GameObject[] sections;
-    private float offset;
+    [HideInInspector] public GameObject player;
+    private PlayerMovement playerMovement;
+    [HideInInspector] public HpScript playerHp;
 
-    private GameObject currentSection = null;
-    private GameObject newSection = null;
+    private bool canScroll = true;
 
-    public PlayerMovement player;
+    public GameObject exitBtn;
 
+    private bool isPaused = false;
 
+    [SerializeField] private SegmentManager _segmentManager;
+    [SerializeField] private Segment _spawnSegment;
+    
 
     void Awake()
     {
-        //get length of a section
-        offset = sections[0].transform.localScale.z;
+        player = GameObject.Find("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
+        playerHp = player.GetComponent<HpScript>();
 
+        _segmentManager.ExpandSegment(_spawnSegment);
+
+        
+        
         //whenever the player enters a new section, spawn another section ahead of it and delete the previous one
-        NewSectionTriggerScript.onNewSectionTriggerEnter += SpawnSection;
-        SpawnSection();
+        HpScript.onHit += OnHit;
+        HpScript.onDeath += OnDeath;
+
+        //Reset time scale incase the user previously exited through the pause menu
+        Time.timeScale = 1f;
     }
 
 
 
     void Update()
     {
-        scrollSpeed += Time.deltaTime * accelerationOverTime; //increase scroll speed the longer the game is played
+        if(scrollSpeed < maxScrollSpeed){
+            scrollSpeed += Time.deltaTime * accelerationOverTime; //increase scroll speed the longer the game is played
+        }
 
-        if(player.flying){
-            speedMultiplier = 1f;
+        if(playerMovement.flying){
+            Debug.Log(playerMovement, playerMovement);
+            scrollSpeedMultiplier = 1f;
         }else{
-            speedMultiplier = fallingSpeedMultiplier;
+            scrollSpeedMultiplier = fallingSpeedMultiplier;
         }
 
 
         //move sections
-        currentSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * speedMultiplier * Time.deltaTime);
-        newSection.transform.position -= new Vector3(0f, 0f, scrollSpeed * speedMultiplier * Time.deltaTime);
+        if(canScroll)
+        {
+            Vector3 moveVector = new Vector3(0f, 0f, scrollSpeed * scrollSpeedMultiplier * Time.deltaTime);
+            _segmentManager.MoveSegments(-moveVector);
+        }
+    }
+    
+
+
+    //decrease scroll speed whenever the player gets hit
+    private void OnHit(){
+        scrollSpeed *= scrollSpeedMultiplierOnHit;
     }
 
+    //stop movement on death
+    private void OnDeath(){
+        canScroll = false;
+        playerMovement.enabled = false;
 
-
-    private void SpawnSection(){
-
-        //currentSection is null at the beginning of the game
-        if(currentSection != null){
-            Destroy(currentSection);
-            currentSection = newSection;
+        //show exit button
+        exitBtn.SetActive(true);
+    }
+    
+    //on death button functions 
+    public void Exit(){
+        playerMovement.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        SceneManager.LoadScene("MainMenu");
+    }
+    
+    //pause menu
+    public void OnPause(InputAction.CallbackContext input){
+        if(isPaused){
+            isPaused = false;
+            playerMovement.enabled = true;
+            exitBtn.SetActive(false);
+            playerMovement.hoverEngine.start();
+            Time.timeScale = 1f;
         }else{
-            currentSection = Instantiate(sections[Random.Range(0, sections.Length)], new Vector3(0f, 0f, 0f), Quaternion.identity);
+            isPaused = true;
+            playerMovement.enabled = false;
+            exitBtn.SetActive(true);
+            playerMovement.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            Time.timeScale = 0f;
         }
         
-        //create new section ahead of the current one
-        newSection = Instantiate(sections[Random.Range(0, sections.Length)], new Vector3(0f, 0f, currentSection.transform.position.z + offset), Quaternion.identity);
-    
     }
+
+
+
 }
