@@ -65,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
             hoverEngine.setParameterByName("RPM", 0.8f);
         }
 
+        //
+        currentEnergy -= energyUsage * Time.fixedDeltaTime;
+
         //animations parameters
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);
