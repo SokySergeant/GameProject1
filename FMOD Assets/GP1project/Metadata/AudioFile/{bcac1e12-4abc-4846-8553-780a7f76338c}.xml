@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bcac1e12-4abc-4846-8553-780a7f76338c}">
+		<property name="assetPath">
+			<value>GP 1 SD - Inside Athmosphere.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>51.692312925170071</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66d5c8d9-65a4-479f-887f-abea55d9d545}</destination>
+		</relationship>
+	</object>
+</objects>
