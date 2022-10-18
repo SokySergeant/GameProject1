@@ -73,7 +73,10 @@ public class EnvironmentData : ScriptableObject
 
     public int RandomProfileIndex()
     {
-        return (int)WeightCurve.Evaluate(Random.Range(0f, WeightSum));
+        int index = (int)WeightCurve.Evaluate(Random.Range(0f, WeightSum));
+        if (index < 0)
+            Debug.LogError($"EnvironmentData: {name} returned invalid random index ({index})", this);
+        return index;
     }
 
     public SegmentProfile RandomProfile()
@@ -86,5 +89,11 @@ public class EnvironmentData : ScriptableObject
     {
         int profileIndex = RandomProfileIndex();
         return profileIndex >= 0 ? SegmentProfiles[profileIndex].Prefab : null;
+    }
+
+    public Segment RandomSegment()
+    {
+        int profileIndex = RandomProfileIndex();
+        return profileIndex >= 0 ? SegmentProfiles[profileIndex].Segment : null;
     }
 }
