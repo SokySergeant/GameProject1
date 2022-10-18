@@ -15,7 +15,17 @@ public class SegmentManager : MonoBehaviour
 
     private List<Segment> _activeSegments = new List<Segment>();
 
-    public Segment CurrentSegment { get; private set; }
+    private Segment _currentSegment;
+    public Segment CurrentSegment
+    {
+        get => _currentSegment;
+        private set
+        {
+            _currentSegment = value;
+            PrewarmSegment(_currentSegment);
+        }
+    }
+
     public EnvironmentData CurrentEnvironment => _environments[EnvironmentIndex];
     
     public float DistanceGenerated { get; private set; }
@@ -41,11 +51,6 @@ public class SegmentManager : MonoBehaviour
         {
             RemoveSegment(oldSegment);
         }
-
-        for (int i = 0; i < PrewarmCount; i++)
-        {
-            AppendSegment();
-        }
     }
 
     public void MoveSegments(Vector3 motion)
@@ -53,20 +58,22 @@ public class SegmentManager : MonoBehaviour
         OnMoveSegments?.Invoke(motion);
     }
 
-    public void AppendSegment()
+    public Segment AppendSegment()
     {
         Segment segment = _activeSegments.Count <= 0 ? _spawnSegmentPrefab.GetComponent<Segment>() : CurrentEnvironment.RandomSegment();
-        AppendSegment(segment);
+        return AppendSegment(segment);
     }
 
-    public void AppendSegment(Segment segment)
+    public Segment AppendSegment(Segment segment)
     {
-        Vector3 worldPrefabPos;
-        Quaternion worldPrefabRot;
+        Segment newSegment;
         if (_activeSegments.Count <= 0)
         {
-            worldPrefabPos = segment.transform.position;
-            worldPrefabRot = Quaternion.identity;
+            Vector3 worldPrefabPos = segment.transform.position;
+            Quaternion worldPrefabRot = Quaternion.identity;
+
+            GameObject newPrefab = Instantiate(segment.gameObject, worldPrefabPos, worldPrefabRot);
+            newSegment = newPrefab.GetComponent<Segment>();
         }
         else
         {
@@ -75,14 +82,18 @@ public class SegmentManager : MonoBehaviour
             Vector3 worldExitPos = lastSegment.ExitPoint.position;
             Vector3 localEntryPos = segment.EntryPoint.position;
             Vector3 localPrefabPos = segment.transform.position;
-            worldPrefabPos = worldExitPos + localPrefabPos - localEntryPos;
-            worldPrefabRot = lastSegment.ExitPoint.rotation;
+            Vector3 worldPrefabPos = worldExitPos + localPrefabPos - localEntryPos;
+            Quaternion worldPrefabRot = lastSegment.ExitPoint.rotation;
+
+            GameObject newPrefab = Instantiate(segment.gameObject, worldPrefabPos, worldPrefabRot);
+            newSegment = newPrefab.GetComponent<Segment>();
+
+            ConnectSegments(lastSegment, newSegment);
         }
 
-        GameObject newPrefab = Instantiate(segment.gameObject, worldPrefabPos, worldPrefabRot);
-        Segment newSegment = newPrefab.GetComponent<Segment>();
-
         _activeSegments.Add(newSegment);
+
+        return newSegment;
     }
 
     public void RemoveSegment()
@@ -100,7 +111,7 @@ public class SegmentManager : MonoBehaviour
 
         // Better to loop over entries or remove everything before index?
         Segment parentSegment = segment;
-        while (parentSegment.HasEntry)
+        while (parentSegment.HasEntrySegment)
         {
             Segment childSegment = parentSegment;
             parentSegment = parentSegment.EntrySegment;
@@ -111,5 +122,27 @@ public class SegmentManager : MonoBehaviour
 
         _activeSegments.Remove(parentSegment);
         Destroy(parentSegment.gameObject);
+    }
+
+    public void PrewarmSegment(Segment segment)
+    {
+        Segment nextSegment = segment;
+        for (int i = 0; i < PrewarmCount; i++)
+        {
+            if (nextSegment.HasExitSegment)
+            {
+                nextSegment = nextSegment.ExitSegment;
+                continue;
+            }
+
+            Debug.Log("Adding another segment.");
+            nextSegment = AppendSegment();
+        }
+    }
+
+    private static void ConnectSegments(Segment entry, Segment exit)
+    {
+        entry.ExitSegment = exit;
+        exit.EntrySegment = entry;
     }
 }

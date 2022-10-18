@@ -16,8 +16,8 @@ public class Segment : MonoBehaviour
     
     public Prop[] Props;
 
-    public bool HasEntry => EntryPoint != null;
-    public bool HasExit => ExitPoint != null;
+    public bool HasEntrySegment => EntrySegment != null;
+    public bool HasExitSegment => ExitSegment != null;
 
     public float Length => Vector3.Distance(EntryPoint.position, ExitPoint.position);
 
@@ -49,12 +49,14 @@ public class SegmentEditor : Editor
         Segment t = target as Segment;
         
         Handles.color = Handles.xAxisColor;
-        if (t.HasEntry)
+        if (t.EntryPoint != null)
             Handles.ArrowHandleCap(0, t.EntryPoint.position, t.EntryPoint.rotation, ArrowSize, EventType.Repaint);
     
         Handles.color = Handles.yAxisColor;
-        if (t.HasExit)
+        if (t.ExitPoint != null)
             Handles.ArrowHandleCap(0, t.ExitPoint.position, t.ExitPoint.rotation, ArrowSize, EventType.Repaint);
+
+        Debug.Log(t.HasEntrySegment);
     }
 }
 
