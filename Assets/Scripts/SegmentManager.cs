@@ -6,11 +6,12 @@ using Random = UnityEngine.Random;
 
 public class SegmentManager : MonoBehaviour
 {
-    public readonly int PrewarmCount = 1;
+    [SerializeField] [Min(1)] private int _prewarmCount = 1;
     [SerializeField] private GameObject _spawnSegmentPrefab;
     [SerializeField] private EnvironmentData[] _environments;
+
     [NonSerialized] public int EnvironmentIndex;
-    
+
     public static event Action<Vector3> OnMoveSegments;
 
     private List<Segment> _activeSegments = new List<Segment>();
@@ -127,7 +128,7 @@ public class SegmentManager : MonoBehaviour
     public void PrewarmSegment(Segment segment)
     {
         Segment nextSegment = segment;
-        for (int i = 0; i < PrewarmCount; i++)
+        for (int i = 0; i < _prewarmCount; i++)
         {
             if (nextSegment.HasExitSegment)
             {
