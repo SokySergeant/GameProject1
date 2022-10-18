@@ -21,9 +21,15 @@ MonoBehaviour:
     Weight: 1
   - Prefab: {fileID: 319934865699455070, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
     Segment: {fileID: 8957927746514673604, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
-    Weight: 1
+    Weight: 0
   - Prefab: {fileID: 319934865699455070, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
     Segment: {fileID: 8957927746514673604, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
+    Weight: 0
+  - Prefab: {fileID: 723242355762581452, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Segment: {fileID: 2293101160916902453, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 2435058842922914057, guid: f4279e3add18b9c43950f34a0b6cb459, type: 3}
+    Segment: {fileID: 3751730837873900784, guid: f4279e3add18b9c43950f34a0b6cb459, type: 3}
     Weight: 1
   WeightSum: 3
   WeightCurve:
@@ -40,7 +46,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 3
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
@@ -49,7 +55,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 2
-      value: 2
+      value: 4
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
@@ -58,7 +64,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 3
-      value: 2
+      value: 4
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
