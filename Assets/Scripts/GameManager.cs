@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     public float fallingSpeedMultiplier = 1.4f;
     public float scrollSpeedMultiplierOnHit = 0.6f;
 
-    public PlayerMovement player;
+    [HideInInspector] public GameObject player;
+    private PlayerMovement playerMovement;
+    [HideInInspector] public HpScript playerHp;
 
     private bool canScroll = true;
 
@@ -27,7 +29,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        player = GameObject.Find("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
+        playerHp = player.GetComponent<HpScript>();
+
         _segmentManager.ExpandSegment(_spawnSegment);
+
+        
         
         //whenever the player enters a new section, spawn another section ahead of it and delete the previous one
         HpScript.onHit += OnHit;
@@ -45,7 +53,8 @@ public class GameManager : MonoBehaviour
             scrollSpeed += Time.deltaTime * accelerationOverTime; //increase scroll speed the longer the game is played
         }
 
-        if(player.flying){
+        if(playerMovement.flying){
+            Debug.Log(playerMovement, playerMovement);
             scrollSpeedMultiplier = 1f;
         }else{
             scrollSpeedMultiplier = fallingSpeedMultiplier;
@@ -60,6 +69,8 @@ public class GameManager : MonoBehaviour
         }
     }
     
+
+
     //decrease scroll speed whenever the player gets hit
     private void OnHit(){
         scrollSpeed *= scrollSpeedMultiplierOnHit;
@@ -68,7 +79,7 @@ public class GameManager : MonoBehaviour
     //stop movement on death
     private void OnDeath(){
         canScroll = false;
-        player.enabled = false;
+        playerMovement.enabled = false;
 
         //show exit button
         exitBtn.SetActive(true);
@@ -76,7 +87,7 @@ public class GameManager : MonoBehaviour
     
     //on death button functions 
     public void Exit(){
-        player.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        playerMovement.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SceneManager.LoadScene("MainMenu");
     }
     
@@ -84,17 +95,20 @@ public class GameManager : MonoBehaviour
     public void OnPause(InputAction.CallbackContext input){
         if(isPaused){
             isPaused = false;
-            player.enabled = true;
+            playerMovement.enabled = true;
             exitBtn.SetActive(false);
-            player.hoverEngine.start();
+            playerMovement.hoverEngine.start();
             Time.timeScale = 1f;
         }else{
             isPaused = true;
-            player.enabled = false;
+            playerMovement.enabled = false;
             exitBtn.SetActive(true);
-            player.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            playerMovement.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             Time.timeScale = 0f;
         }
         
     }
+
+
+
 }

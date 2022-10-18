@@ -8,7 +8,9 @@ using Random = UnityEngine.Random;
 public class EnvironmentData : ScriptableObject
 {
     public string Name = "Environment";
-    
+
+    public Segment EntrySegment;
+    public Segment ExitSegment;
     public SegmentProfile[] SegmentProfiles;
 
     public float WeightSum;
@@ -71,7 +73,7 @@ public class EnvironmentData : ScriptableObject
 
     public int RandomProfileIndex()
     {
-        return (int)WeightCurve.Evaluate(Random.Range(0f, 1f));
+        return (int)WeightCurve.Evaluate(Random.Range(0f, WeightSum));
     }
 
     public SegmentProfile RandomProfile()

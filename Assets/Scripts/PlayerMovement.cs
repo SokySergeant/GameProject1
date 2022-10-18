@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentEnergy;
     private float maxEnergy = 200f;
-    public float energyUsage = 1f;
+    public float energyFlyingUsage = 1f;
+    public float energyDepletionRate = 20f;
     public Slider energyBar;
 
     private FMOD.Studio.EventInstance solarEngine;
@@ -48,13 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
         if(flying && currentEnergy > 0f){
             velocity = new Vector3(velocity.x, jumpPower, velocity.z);
-            currentEnergy -= energyUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
+            currentEnergy -= energyFlyingUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
         }else{
             velocity = gravity; //constant gravity to act like gliding
             solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
-        moveVector = new Vector3(horizontalInput.x * playerSpeed * Time.fixedDeltaTime, 0f, 0f);
+        moveVector = new Vector3(horizontalInput.x, 0f, 0f);
 
         energyBar.value = currentEnergy / maxEnergy;
 
@@ -65,6 +66,13 @@ public class PlayerMovement : MonoBehaviour
             hoverEngine.setParameterByName("RPM", 0.8f);
         }
 
+        //constantly deleting energy 
+        currentEnergy -= energyDepletionRate * Time.fixedDeltaTime;
+        if(currentEnergy <= 0f){
+            currentEnergy = 0f;
+        }
+
+        //animations parameters
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);
         animator.SetBool("Grounded", controller.isGrounded);
@@ -72,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        controller.Move(velocity * Time.deltaTime + moveVector); //this is here for smoother movement
+        controller.Move((velocity + moveVector * playerSpeed) * Time.deltaTime); //this is here as opposed to in FixedUpdate for smoother movement
     }
 
 
@@ -108,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(lightSourcePos, dir, out hit)){ //shoot a ray towards the player
                 if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){ //check if nothing is obstructing the space between the lightsource and player, meaning nothing is creating shade
-                    currentEnergy += energyUsage * Time.fixedDeltaTime;
+                    currentEnergy += energyFlyingUsage * Time.fixedDeltaTime;
                     currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy); //clamp currentEnergy so it doesn't go above max
                 }
             }
