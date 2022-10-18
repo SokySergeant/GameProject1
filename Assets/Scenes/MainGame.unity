@@ -1900,11 +1900,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7965223080575155696, guid: d7445cc86d6293c40974ae6aa814a919, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 171.7
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 7965223080575155696, guid: d7445cc86d6293c40974ae6aa814a919, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 182
+      value: 439.2
       objectReference: {fileID: 0}
     - target: {fileID: 7965223080575155699, guid: d7445cc86d6293c40974ae6aa814a919, type: 3}
       propertyPath: m_RootOrder
@@ -1981,7 +1981,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7965223080575155696, guid: d7445cc86d6293c40974ae6aa814a919, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 171.7
+      value: 131.6
       objectReference: {fileID: 0}
     - target: {fileID: 7965223080575155696, guid: d7445cc86d6293c40974ae6aa814a919, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
