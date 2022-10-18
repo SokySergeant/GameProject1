@@ -4,9 +4,6 @@
 		<property name="assetPath">
 			<value>GP 1 SD - Damaged Board.wav</value>
 		</property>
-		<property name="isStreaming">
-			<value>true</value>
-		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
 		</property>

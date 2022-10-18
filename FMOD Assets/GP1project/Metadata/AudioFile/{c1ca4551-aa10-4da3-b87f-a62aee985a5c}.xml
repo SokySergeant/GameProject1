@@ -4,9 +4,6 @@
 		<property name="assetPath">
 			<value>GP 1 SD - Desert Athmosphere.wav</value>
 		</property>
-		<property name="isStreaming">
-			<value>true</value>
-		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
 		</property>
@@ -14,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>80.307687074829929</value>
+			<value>34.15385487528345</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{66d5c8d9-65a4-479f-887f-abea55d9d545}</destination>
