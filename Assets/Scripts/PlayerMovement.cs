@@ -62,8 +62,10 @@ public class PlayerMovement : MonoBehaviour
 
         if(horizontalInput.x != 0f){
             hoverEngine.setParameterByName("RPM", 1f);
+            
         }else{
             hoverEngine.setParameterByName("RPM", 0.8f);
+           
         }
 
         //constantly deleting energy 
@@ -81,6 +83,18 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         controller.Move((velocity + moveVector * playerSpeed) * Time.deltaTime); //this is here as opposed to in FixedUpdate for smoother movement
+
+       /* if (!flying && !controller.isGrounded)
+        {
+            BetterCameraControllerScript.zoomOn = true;
+            Debug.Log("zoommode");
+        }
+        else
+        {
+            BetterCameraControllerScript.zoomOn = false;
+            Debug.Log("unzoommode");
+        }
+        */
     }
 
 
