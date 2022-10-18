@@ -15,9 +15,14 @@ public class SegmentManager : MonoBehaviour
     public Segment CurrentSegment { get; private set; }
     public EnvironmentData CurrentEnvironment => _environments[EnvironmentIndex];
     
-    public void Awake()
+    private void Awake()
     {
         SegmentTrigger.OnSegmentEnter += OnSegmentEnter;
+    }
+
+    private void OnDisable()
+    {
+        SegmentTrigger.OnSegmentEnter -= OnSegmentEnter;
     }
 
     int segmentsPassed = -1;
