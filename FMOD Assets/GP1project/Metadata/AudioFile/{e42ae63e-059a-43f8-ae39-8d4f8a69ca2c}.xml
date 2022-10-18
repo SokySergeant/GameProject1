@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e42ae63e-059a-43f8-ae39-8d4f8a69ca2c}">
+		<property name="assetPath">
+			<value>GP 1 SD - Damaged Board.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.6923129251700679</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66d5c8d9-65a4-479f-887f-abea55d9d545}</destination>
+		</relationship>
+	</object>
+</objects>

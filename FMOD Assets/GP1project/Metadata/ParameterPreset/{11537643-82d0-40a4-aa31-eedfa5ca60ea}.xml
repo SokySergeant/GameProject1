@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{11537643-82d0-40a4-aa31-eedfa5ca60ea}">
+		<property name="name">
+			<value>WindLR</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0b30afd5-0030-4be0-b77e-c205881c3cf8}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a8a25ec0-f56d-41d6-9a9c-d5b31cf5e0a9}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a8a25ec0-f56d-41d6-9a9c-d5b31cf5e0a9}">
+		<property name="initialValue">
+			<value>0.50082099437713623</value>
+		</property>
+	</object>
+</objects>

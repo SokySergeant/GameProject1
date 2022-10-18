@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d4698f90-8e77-4adc-85a1-95c9651ea7d8}">
+		<property name="assetPath">
+			<value>GP 1 SD - Obstacle Impact (Rocks).wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8461451247165532</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66d5c8d9-65a4-479f-887f-abea55d9d545}</destination>
+		</relationship>
+	</object>
+</objects>

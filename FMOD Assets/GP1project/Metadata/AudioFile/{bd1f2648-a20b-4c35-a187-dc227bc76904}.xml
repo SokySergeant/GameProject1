@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bd1f2648-a20b-4c35-a187-dc227bc76904}">
+		<property name="assetPath">
+			<value>GP 1 Music - Piano.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>202.81689342403629</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66d5c8d9-65a4-479f-887f-abea55d9d545}</destination>
+		</relationship>
+	</object>
+</objects>

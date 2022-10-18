@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{742bbc3c-cc9d-4502-afe1-3d7d85f84661}">
+		<property name="name">
+			<value>WindFlyVol</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0b30afd5-0030-4be0-b77e-c205881c3cf8}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{fbc079b5-bf8e-454a-bead-eeb061256f33}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{fbc079b5-bf8e-454a-bead-eeb061256f33}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
