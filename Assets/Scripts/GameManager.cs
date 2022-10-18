@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
 
     [SerializeField] private SegmentManager _segmentManager;
-    [SerializeField] private Segment _spawnSegment;
-    
 
     void Awake()
     {
@@ -33,9 +31,7 @@ public class GameManager : MonoBehaviour
         playerMovement = player.GetComponent<PlayerMovement>();
         playerHp = player.GetComponent<HpScript>();
 
-        _segmentManager.ExpandSegment(_spawnSegment);
-
-        
+        _segmentManager.AppendSegment();
         
         //whenever the player enters a new section, spawn another section ahead of it and delete the previous one
         HpScript.onHit += OnHit;
