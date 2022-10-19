@@ -12,17 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7654cfea1761774428114a9cc91f962f, type: 3}
   m_Name: InsideEnvironmentData
   m_EditorClassIdentifier: 
-  Name: Environment
-  EntrySegment: {fileID: 0}
+  Name: Environmentinside
+  EntrySegment: {fileID: 6677294178361318162, guid: b665655db35f2b84690fc08990a89a7e, type: 3}
   ExitSegment: {fileID: 0}
-  SegmentProfiles: []
-  WeightSum: 0
+  SegmentProfiles:
+  - Prefab: {fileID: 1919141766752241686, guid: 2e0d99a483701f640bfe4a7c92f59a45, type: 3}
+    Segment: {fileID: 0}
+    Weight: 1
+  - Prefab: {fileID: 892588090382506570, guid: 11707dbec26ef3f4bbab38a180616fc7, type: 3}
+    Segment: {fileID: 0}
+    Weight: 1
+  WeightSum: 2
   WeightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: -1
+      value: 0
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2
+      value: 1
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
