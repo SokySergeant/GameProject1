@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{783474f9-4005-4134-bbd5-94e042c09384}">
 		<property name="name">
-			<value>Background Music</value>
+			<value>BackgroundMusic</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -739,7 +739,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{3a296717-07b4-4d32-acad-68da0773b3cd}">
@@ -747,7 +747,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-80</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{a066d530-604a-4d35-8569-e8530a3d627e}">
@@ -755,7 +755,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{82910cc0-adb8-44be-9988-84186ec20a1c}">
@@ -763,7 +763,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-80</value>
 		</property>
 	</object>
 </objects>

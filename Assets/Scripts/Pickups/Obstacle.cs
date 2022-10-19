@@ -8,6 +8,7 @@ public class Obstacle : PickupAbstract
 
     public override void DoPickupAction(GameManager gameManager){
         gameManager.playerHp.ChangeHp(-damage);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Objects/Obstacles/Obstacle1");
         Destroy(gameObject);
     }
 }
