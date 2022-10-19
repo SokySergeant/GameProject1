@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7654cfea1761774428114a9cc91f962f, type: 3}
-  m_Name: InsideEnvironmentData Inside
+  m_Name: InsideEnvironmentData
   m_EditorClassIdentifier: 
   Name: Environment
   EntrySegment: {fileID: 0}

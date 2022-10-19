@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float playerSpeed = 5f;
+    public float playerSpeed = 15f;
     public float jumpPower = 10f;
     public Vector2 horizontalInput;
 
@@ -83,18 +83,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         controller.Move((velocity + moveVector * playerSpeed) * Time.deltaTime); //this is here as opposed to in FixedUpdate for smoother movement
-
-       /* if (!flying && !controller.isGrounded)
-        {
-            BetterCameraControllerScript.zoomOn = true;
-            Debug.Log("zoommode");
-        }
-        else
-        {
-            BetterCameraControllerScript.zoomOn = false;
-            Debug.Log("unzoommode");
-        }
-        */
     }
 
 
