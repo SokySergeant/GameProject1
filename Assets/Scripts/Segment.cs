@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -19,6 +17,9 @@ public class Segment : MonoBehaviour
     public bool HasEntrySegment => EntrySegment != null;
     public bool HasExitSegment => ExitSegment != null;
 
+    /// <summary>
+    /// The distance between the entry and exit points.
+    /// </summary>
     public float Length => Vector3.Distance(EntryPoint.position, ExitPoint.position);
 
     private void Awake()
@@ -55,8 +56,6 @@ public class SegmentEditor : Editor
         Handles.color = Handles.yAxisColor;
         if (t.ExitPoint != null)
             Handles.ArrowHandleCap(0, t.ExitPoint.position, t.ExitPoint.rotation, ArrowSize, EventType.Repaint);
-
-        Debug.Log(t.HasEntrySegment);
     }
 }
 
