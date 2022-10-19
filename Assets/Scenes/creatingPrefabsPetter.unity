@@ -272,8 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prewarmCount: 1
   _spawnSegmentPrefab: {fileID: 3675928656332408999, guid: 207afabff6e8e1f47b364ea5f6e6d401, type: 3}
-  _environments:
-  - {fileID: 11400000, guid: 93ce655ce3e314b47ba52e2ccbe06344, type: 2}
+  _environmentProfiles: []
 --- !u!4 &11938376
 Transform:
   m_ObjectHideFlags: 0
@@ -820,6 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpText: {fileID: 1947032670}
   invulnerabilityTime: 1.5
+  musicSwitchSpeed: 5
 --- !u!114 &159177244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3200,7 +3200,7 @@ PrefabInstance:
       objectReference: {fileID: 961121404}
     - target: {fileID: 2673435735932900835, guid: 0d405ffd7270cb145a50bdd7184cff34, type: 3}
       propertyPath: m_VersionIndex
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4087439432287803632, guid: 0d405ffd7270cb145a50bdd7184cff34, type: 3}
       propertyPath: m_LocalPosition.z
