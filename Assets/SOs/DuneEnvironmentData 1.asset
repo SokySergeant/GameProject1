@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DuneEnvironmentData 1
   m_EditorClassIdentifier: 
   Name: Environment
-  EntrySegment: {fileID: 1932954049698535613, guid: 184a5c7c8de869140ba91a8a041e947b, type: 3}
-  ExitSegment: {fileID: 4437919716242077617, guid: d14cb3b87b1d3df4881049c5a2c5d860, type: 3}
+  EntrySegment: {fileID: 300140938204453644, guid: f75eb49a310f3b246a73c19c1c0ae19b, type: 3}
+  ExitSegment: {fileID: 300140938204453644, guid: f75eb49a310f3b246a73c19c1c0ae19b, type: 3}
   SegmentProfiles:
   - Prefab: {fileID: 4303329268120678180, guid: 22ee71011b755bb45938fd1b2e3e6f47, type: 3}
     Segment: {fileID: 3342723599292023517, guid: 22ee71011b755bb45938fd1b2e3e6f47, type: 3}
