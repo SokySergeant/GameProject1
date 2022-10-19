@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 3582534800537574892}
   - component: {fileID: 439210909522154057}
   - component: {fileID: 2448995811780699779}
+  - component: {fileID: 7170027254900381200}
+  - component: {fileID: 5883994418812809479}
+  - component: {fileID: 1343476331648273222}
   m_Layer: 0
   m_Name: Camel_Stone
   m_TagString: Untagged
@@ -83,3 +86,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7170027254900381200
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250387352762189654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.3965073, y: 7.6413813, z: 15.625374}
+  m_Center: {x: -4.0269957, y: 3.8171353, z: 0.710701}
+--- !u!65 &5883994418812809479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250387352762189654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.027813, y: 4.176411, z: 3.714716}
+  m_Center: {x: -4.187043, y: 9.811424, z: 5.605193}
+--- !u!65 &1343476331648273222
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250387352762189654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2744265, y: 8.936773, z: 4.2397156}
+  m_Center: {x: -4.4541526, y: 12.423713, z: -2.8451176}

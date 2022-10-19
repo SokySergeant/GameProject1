@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: EnvironmentData
   m_EditorClassIdentifier: 
   Name: Environment
-  EntrySegment: {fileID: 0}
-  ExitSegment: {fileID: 0}
+  EntrySegment: {fileID: 1932954049698535613, guid: 184a5c7c8de869140ba91a8a041e947b, type: 3}
+  ExitSegment: {fileID: 4437919716242077617, guid: d14cb3b87b1d3df4881049c5a2c5d860, type: 3}
   SegmentProfiles:
-  - Prefab: {fileID: 5557039871811045822, guid: ce513952f7498724b9f809c1f5497177, type: 3}
-    Segment: {fileID: 5557039871811045821, guid: ce513952f7498724b9f809c1f5497177, type: 3}
+  - Prefab: {fileID: 216042111177793982, guid: 0d405ffd7270cb145a50bdd7184cff34, type: 3}
+    Segment: {fileID: 1667540688096791623, guid: 0d405ffd7270cb145a50bdd7184cff34, type: 3}
     Weight: 1
-  WeightSum: 1
+  - Prefab: {fileID: 319934865699455070, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
+    Segment: {fileID: 8957927746514673604, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
+    Weight: 1
+  WeightSum: 2
   WeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -34,7 +37,16 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2
+      value: 1
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
