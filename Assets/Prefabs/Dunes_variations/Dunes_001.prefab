@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7737746540664515371}
   - component: {fileID: 5513822332113657825}
   m_Layer: 0
-  m_Name: Dunes_01
+  m_Name: Dunes_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
