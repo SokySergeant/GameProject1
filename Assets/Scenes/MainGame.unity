@@ -649,7 +649,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213021432}
-  m_LocalRotation: {x: 0.080403864, y: 0.00000002233545, z: -0.0000000018016896, w: 0.9967624}
+  m_LocalRotation: {x: 0.08040387, y: 0.0000000063208705, z: -5.098732e-10, w: 0.9967624}
   m_LocalPosition: {x: 0, y: 7.51, z: -13.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6902,7 +6902,6 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
-  - component: {fileID: 963194232}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7056,18 +7055,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &963194232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1047314723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13739,10 +13726,10 @@ MonoBehaviour:
   energyFlyingUsage: 15
   energyDepletionRate: 1
   energyBar: {fileID: 873737989}
-  engineRampupSpeed: 0.5
-  engineHorizontalRampupSpeed: 0.5
-  windHorizontalRampupSpeed: 0.5
-  fallingSoundVolRampupSpeed: 0.5
+  verticalEngineSoundRampupSpeed: 1
+  horizontalEngineSoundRampupSpeed: 1
+  windHorizontalRampupSpeed: 1
+  fallingSoundVolRampupSpeed: 1
 --- !u!114 &1908428077
 MonoBehaviour:
   m_ObjectHideFlags: 0

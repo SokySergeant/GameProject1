@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7420730052260724377}
   - component: {fileID: 7130142014996928794}
+  - component: {fileID: 1303883902222958354}
   m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Untagged
@@ -128,6 +129,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1303883902222958354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2764843537093212299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd8ef3c1c97d8c4fa6c95e19060f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &3420458879743879173
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +151,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2611025200732877503}
-  - component: {fileID: 5001014992650495579}
   m_Layer: 0
   m_Name: airplane
   m_TagString: Untagged
@@ -167,19 +180,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &5001014992650495579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3420458879743879173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd8ef3c1c97d8c4fa6c95e19060f11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &5340982571841972312
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7754289915265035266}
   - component: {fileID: 2637605121420390521}
+  - component: {fileID: 1639425028407666421}
   m_Layer: 0
   m_Name: GameObject (3)
   m_TagString: Untagged
@@ -510,3 +511,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1639425028407666421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132161580248387131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd8ef3c1c97d8c4fa6c95e19060f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

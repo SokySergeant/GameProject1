@@ -26,26 +26,31 @@ public class PlayerMovement : MonoBehaviour
     public float energyDepletionRate = 20f;
     public Slider energyBar;
 
-    private FMOD.Studio.EventInstance solarEngine;
-    public FMOD.Studio.EventInstance hoverEngine;
+    private FMOD.Studio.EventInstance verticalEngineSound;
+    private float tempVerticalEngineRpm = 0.2f;
+    private float targetVerticalEngineRpm;
+    public float verticalEngineSoundRampupSpeed = 0.5f;
+
+    public FMOD.Studio.EventInstance horizontalEngineSound;
+    private float tempHorizontalEngineRpm = 0.8f;
+    private float targetHorizontalEngineRpm;
+    public float horizontalEngineSoundRampupSpeed = 0.5f;
+
     private FMOD.Studio.EventInstance windHorizontalSound;
+    private float tempWindHorizontal = 0.5f;
+    private float targetWindHorizontal;
+    public float windHorizontalRampupSpeed = 0.5f;
+
     private FMOD.Studio.EventInstance chargingSound;
+
     private FMOD.Studio.EventInstance fallingSound;
+    private float tempFallingSoundVol = 0f;
+    private float targetFallingSoundVol;
+    public float fallingSoundVolRampupSpeed = 0.5f;
 
     private Animator animator;
 
-    private float tempRpm;
-    public float engineRampupSpeed = 0.5f;
-
-    private float tempHorizontalRpm;
-    public float engineHorizontalRampupSpeed = 0.5f;
-
-    private float tempWindHorizontal = 0.5f;
-    public float windHorizontalRampupSpeed = 0.5f;
-
-    private float tempFallingSoundVol = 0f;
-    public float fallingSoundVolRampupSpeed = 0.5f;
-
+    
 
     private void Awake()
     {
@@ -55,92 +60,109 @@ public class PlayerMovement : MonoBehaviour
         currentEnergy = maxEnergy;
         currentFallingSpeed = fallingSpeed;
 
-        hoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
-        hoverEngine.start();
+        //engine left right sound
+        horizontalEngineSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
+        horizontalEngineSound.start();
 
-        solarEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/SolarPowerFly");
+        //flying sound
+        verticalEngineSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/SolarPowerFly");
 
+        //wind left right sound
         windHorizontalSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Wind/WindMove");
+        windHorizontalSound.start();
         windHorizontalSound.setParameterByName("WindLR", 0.5f);
 
+        //light charging sound
         chargingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineCharging");
 
+        //falling sound
         fallingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Wind/WindFlying");
         fallingSound.start();
         fallingSound.setParameterByName("WindFlyVol", 0f);
-
     }
+
+
 
     private void FixedUpdate()
     {
+        //gravity
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
 
         //flying
         if(flying && currentEnergy > 0f){
+            //adding upwards velocity
             velocity = new Vector3(velocity.x, flyingSpeed, velocity.z);
             currentEnergy -= energyFlyingUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
 
             //engine sound ramping
-            tempRpm += engineRampupSpeed * Time.fixedDeltaTime;
-            tempRpm = Mathf.Clamp(tempRpm, 0f, 1f);
-            solarEngine.setParameterByName("RPM SP", tempRpm);
-
-            //tempFallingSoundVol += fallingSoundVolRampupSpeed * Time.fixedDeltaTime;
+            targetVerticalEngineRpm = 1f;
         }
-        else{
+        else{ //not flying
             velocity = gravity * currentFallingSpeed; //constant gravity to act like gliding
-            solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
-            if (!controller.isGrounded){
-                //tempFallingSoundVol -= fallingSoundVolRampupSpeed * Time.fixedDeltaTime;
+            if(controller.isGrounded){ //not falling
+                targetFallingSoundVol = 0f;
             }else{
-                //tempFallingSoundVol += fallingSoundVolRampupSpeed * Time.fixedDeltaTime;
+                targetFallingSoundVol = 1f;
             }
-                
         }
-        //tempFallingSoundVol = Mathf.Clamp(tempFallingSoundVol, 0f, 1f);
-        //fallingSound.setParameterByName("WindFlyVol", tempFallingSoundVol);
-        float temp = 0f;
-        fallingSound.getParameterByName("WindFlyVol", out temp);
-        Debug.Log(temp);
 
+        //getting left right movement
         moveVector = new Vector3(horizontalInput.x, 0f, 0f);
 
+        //updating energy bar
         energyBar.value = currentEnergy / maxEnergy;
 
 
+        //setting horizontal engine sound rpm targets
         if(horizontalInput.x != 0f){
-            tempHorizontalRpm += engineHorizontalRampupSpeed * Time.fixedDeltaTime;
+            targetHorizontalEngineRpm = 1f;
         }
         else{
-            tempHorizontalRpm -= engineHorizontalRampupSpeed * Time.fixedDeltaTime;
+            targetHorizontalEngineRpm = 0.8f;
         }
-        //horizontal sound
-        tempHorizontalRpm = Mathf.Clamp(tempHorizontalRpm, 0.8f, 1f);
-        hoverEngine.setParameterByName("RPM", tempHorizontalRpm);
+        
 
-        if (horizontalInput.x > 0f) {
-            tempWindHorizontal += windHorizontalRampupSpeed * Time.fixedDeltaTime;
-        } else if (horizontalInput.x < 0f) {
-            tempWindHorizontal -= windHorizontalRampupSpeed * Time.fixedDeltaTime;
-        } else{
-            tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, 0.5f, windHorizontalRampupSpeed * 10f * Time.fixedDeltaTime);
+        //setting wind sound targets
+        if(horizontalInput.x > 0f){
+            targetWindHorizontal = 1f;
+        }else if(horizontalInput.x < 0f){
+            targetWindHorizontal = 0f;
+        }else{
+            targetWindHorizontal = 0.5f;
+            tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, targetWindHorizontal, windHorizontalRampupSpeed * 10f * Time.fixedDeltaTime); //lerp here as well so the return to 0.5f is 10 times faster
         }
-        tempWindHorizontal = Mathf.Clamp(tempWindHorizontal, 0f, 1f);
-        windHorizontalSound.setParameterByName("WindLR", tempWindHorizontal);
 
-        //constantly deleting energy 
+
+        //constantly depleting energy 
         currentEnergy -= energyDepletionRate * Time.fixedDeltaTime;
         if(currentEnergy <= 0f){
             currentEnergy = 0f;
         }
 
+
         //animations parameters
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);
         animator.SetBool("Grounded", controller.isGrounded);
+
+
+        //lerping temporary sound values
+        tempVerticalEngineRpm = Mathf.Lerp(tempVerticalEngineRpm, targetVerticalEngineRpm, verticalEngineSoundRampupSpeed * Time.fixedDeltaTime);
+        verticalEngineSound.setParameterByName("RPM SP", tempVerticalEngineRpm);
+
+        tempHorizontalEngineRpm = Mathf.Lerp(tempHorizontalEngineRpm, targetHorizontalEngineRpm, horizontalEngineSoundRampupSpeed * Time.fixedDeltaTime);
+        horizontalEngineSound.setParameterByName("RPM", tempHorizontalEngineRpm);
+
+        tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, targetWindHorizontal, windHorizontalRampupSpeed * Time.fixedDeltaTime);
+        windHorizontalSound.setParameterByName("WindLR", tempWindHorizontal);
+
+        tempFallingSoundVol = Mathf.Lerp(tempFallingSoundVol, targetFallingSoundVol, fallingSoundVolRampupSpeed * Time.fixedDeltaTime);
+        fallingSound.setParameterByName("WindFlyVol", tempFallingSoundVol);
     }
+
+
 
     private void Update()
     {
@@ -154,7 +176,6 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = input.ReadValue<Vector2>();
 
         if (input.started){
-            windHorizontalSound.start();
             tempWindHorizontal = 0.5f;
             windHorizontalSound.setParameterByName("WindLR", 0.5f);
         }
@@ -168,10 +189,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(input.started && currentEnergy > 0f){
-            solarEngine.start();
-            tempRpm = 0.2f;
-        }else if(input.canceled && currentEnergy > 0f){
-            solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            verticalEngineSound.start();
+            tempVerticalEngineRpm = 0.2f;
+        }else if(input.canceled){
+            verticalEngineSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 

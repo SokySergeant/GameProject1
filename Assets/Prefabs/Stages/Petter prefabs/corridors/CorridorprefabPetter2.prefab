@@ -2620,6 +2620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 892588090382506677}
+  - component: {fileID: 1969490524429738504}
   m_Layer: 0
   m_Name: CorridorprefabPetter2
   m_TagString: Untagged
@@ -2717,6 +2718,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1969490524429738504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892588090382506570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21ebe14b2807d04bbae2a31459cc629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntryPoint: {fileID: 2396242969978921378}
+  ExitPoint: {fileID: 3555123970983776551}
+  Props: []
 --- !u!1 &892588090382601204
 GameObject:
   m_ObjectHideFlags: 0

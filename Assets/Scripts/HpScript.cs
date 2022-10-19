@@ -36,6 +36,7 @@ public class HpScript : MonoBehaviour
         hpText.text = "HP: " + currentHp;
 
         damagedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineDamaged");
+        
         music = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BackgroundMusic");
         music.start();
         music.setParameterByName("HealthST1", 0f);
@@ -46,6 +47,7 @@ public class HpScript : MonoBehaviour
 
     private void Update()
     {
+        //get new sound volumes
         tempST1Vol = Mathf.Lerp(tempST1Vol, ST1TargetVol, musicSwitchSpeed * Time.deltaTime);
         tempST2Vol = Mathf.Lerp(tempST2Vol, ST2TargetVol, musicSwitchSpeed * Time.deltaTime);
 
@@ -69,16 +71,16 @@ public class HpScript : MonoBehaviour
             //update hud
             hpText.text = "HP: " + currentHp;
 
-            if(currentHp == 2){
-                ST1TargetVol = 1f;
-                ST2TargetVol = 0f;
-            }
-            else if(currentHp == 1){
+            float tempRatio = (float)currentHp / (float)maxHp;
+
+            if(tempRatio < 0.3f){
                 damagedSound.start();
                 ST1TargetVol = 1f;
                 ST2TargetVol = 1f;
-            }
-            else{
+            }else if(tempRatio < 0.5f){
+                ST1TargetVol = 1f;
+                ST2TargetVol = 0f;
+            }else{
                 damagedSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 ST1TargetVol = 0f;
                 ST2TargetVol = 0f;
@@ -89,9 +91,8 @@ public class HpScript : MonoBehaviour
 
                 music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 onDeath?.Invoke();
-            }
 
-            if (hp < 0){ //if the given hp is below 0, the player is taking damage
+            }else if (hp < 0){ //if the given hp is below 0, the player is taking damage
                 onHit?.Invoke();
                 invulnerable = true;
                 yield return new WaitForSeconds(invulnerabilityTime);

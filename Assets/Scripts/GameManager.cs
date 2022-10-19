@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     
     //on death button functions 
     public void Exit(){
-        playerMovement.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        playerMovement.horizontalEngineSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SceneManager.LoadScene("MainMenu");
     }
     
@@ -90,13 +90,13 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             playerMovement.enabled = true;
             exitBtn.SetActive(false);
-            playerMovement.hoverEngine.start();
+            playerMovement.horizontalEngineSound.start();
             Time.timeScale = 1f;
         }else{
             isPaused = true;
             playerMovement.enabled = false;
             exitBtn.SetActive(true);
-            playerMovement.hoverEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            playerMovement.horizontalEngineSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             Time.timeScale = 0f;
         }
         
