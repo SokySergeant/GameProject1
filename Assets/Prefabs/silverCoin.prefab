@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7289295180601028643}
   - component: {fileID: 4813274952476132585}
   - component: {fileID: 5116171771538642048}
+  - component: {fileID: 7530116344912588401}
   m_Layer: 0
   m_Name: silverCoin
   m_TagString: Untagged
@@ -104,3 +105,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &7530116344912588401
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470771483522082108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6739027680649345306, guid: 8d6e6d3b9c87d3745a57dfc1a7e07aa1, type: 3}

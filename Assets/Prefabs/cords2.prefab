@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1290550463226972789}
+  - component: {fileID: 2403126691728921117}
   m_Layer: 0
   m_Name: cords2
   m_TagString: Untagged
@@ -36,6 +37,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2403126691728921117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919417876493390031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5038509, y: 3.0730877, z: 13.703873}
+  m_Center: {x: 1.5706244, y: -1.0365438, z: 6.792549}
 --- !u!1 &4467656827322494964
 GameObject:
   m_ObjectHideFlags: 0
