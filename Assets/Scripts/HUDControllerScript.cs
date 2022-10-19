@@ -33,12 +33,12 @@ public class HUDControllerScript : MonoBehaviour
         debugText.text = "Altitude:" + BetterCameraControllerScript.currentPlayerY.ToString();
 
         distanceTravelled = -Mathf.RoundToInt(spawnSegmentObject.transform.position.z - startZ) * distanceUnit;
-        distanceText.text = "Score: " + distanceTravelled.ToString();
+        distanceText.text = "SCORE: " + distanceTravelled.ToString();
         if(distanceTravelled > highScore)
         {
             highScore = distanceTravelled;
         }
 
-        highScoreText.text = "High score: " + highScore.ToString();
+        highScoreText.text = "HIGH SCORE: " + highScore.ToString();
     }
 }
