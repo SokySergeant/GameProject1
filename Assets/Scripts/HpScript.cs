@@ -16,6 +16,8 @@ public class HpScript : MonoBehaviour
 
     public TextMeshProUGUI hpText;
 
+    private bool invulnerable = false;
+    public float invulnerabilityTime = 1.5f;
 
 
     void Awake()
@@ -43,25 +45,38 @@ public class HpScript : MonoBehaviour
 
 
     public void ChangeHp(int hp){
-        currentHp += hp;
+        StartCoroutine(ChangeHpRoutine(hp));
+    }
 
-        //make sure hp doesn't go above max or below 0
-        currentHp = Mathf.Clamp(currentHp, 0, maxHp);
+    private IEnumerator ChangeHpRoutine(int hp){
+        if(!invulnerable){
+            currentHp += hp;
 
-        //update hud
-        hpText.text = "HP: " + currentHp;
+            //make sure hp doesn't go above max or below 0
+            currentHp = Mathf.Clamp(currentHp, 0, maxHp);
 
-        if(currentHp <= 0){ //if hp is below or equal to 0, the player died
-            hpText.text = "HP: X";
-            onDeath?.Invoke();
+            //update hud
+            hpText.text = "HP: " + currentHp;
+
+            if(currentHp <= 0){ //if hp is below or equal to 0, the player died
+                hpText.text = "HP: X";
+                onDeath?.Invoke();
+            }
+
+            if (hp < 0){ //if the given hp is below 0, the player is taking damage
+                invulnerable = true;
+                yield return new WaitForSeconds(invulnerabilityTime);
+                invulnerable = false;
+            }else{
+                yield return null;
+            }
         }
     }
     
 
 
     //empty events for next playthrough
-    void OnDisable()
-    {
+    void OnDisable(){
         onHit = null;
         onDeath = null;
     }

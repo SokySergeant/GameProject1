@@ -644,7 +644,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213021432}
-  m_LocalRotation: {x: 0.08040389, y: -0.000000009821081, z: 7.9221796e-10, w: 0.9967624}
+  m_LocalRotation: {x: 0.08040387, y: 0.0000000063208687, z: -5.098731e-10, w: 0.9967624}
   m_LocalPosition: {x: 0, y: 7.51, z: -13.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8741,8 +8741,8 @@ GameObject:
   - component: {fileID: 1908428075}
   - component: {fileID: 1908428078}
   - component: {fileID: 1908428076}
-  - component: {fileID: 1908428077}
   - component: {fileID: 1908428079}
+  - component: {fileID: 1908428077}
   - component: {fileID: 1908428080}
   m_Layer: 9
   m_Name: Player
@@ -8963,6 +8963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpText: {fileID: 844256855}
+  invulnerabilityTime: 1.5
 --- !u!54 &1908428080
 Rigidbody:
   m_ObjectHideFlags: 0
