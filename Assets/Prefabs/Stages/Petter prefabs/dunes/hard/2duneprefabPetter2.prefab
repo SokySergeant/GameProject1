@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 8819467119641602221}
   - component: {fileID: 2357619938231306876}
   m_Layer: 0
-  m_Name: duneprefabPetter2
+  m_Name: 2duneprefabPetter2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

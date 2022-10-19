@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 3450902222248880956}
   - component: {fileID: 8446194337458309613}
   m_Layer: 0
-  m_Name: duneprefabPetter4
+  m_Name: 4duneprefabPetter4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
