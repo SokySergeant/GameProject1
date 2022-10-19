@@ -116,12 +116,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     public void OnFall(InputAction.CallbackContext input){
-        Debug.Log("test");
         if(input.started){
-            Debug.Log("start");
             currentFallingSpeed = fallingSpeedOnDownHold;
         }else if(input.canceled){
-            Debug.Log("end");
             currentFallingSpeed = fallingSpeed;
         }
     }
