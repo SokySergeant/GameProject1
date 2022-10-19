@@ -20,6 +20,14 @@ public class HpScript : MonoBehaviour
     public float invulnerabilityTime = 1.5f;
 
     private FMOD.Studio.EventInstance damagedSound;
+    private FMOD.Studio.EventInstance music;
+
+    private float tempST1Vol = 0f;
+    private float tempST2Vol = 0f;
+    private float ST1TargetVol = 0f;
+    private float ST2TargetVol = 0f;
+
+    public float musicSwitchSpeed = 5f;
 
 
     void Awake()
@@ -28,6 +36,21 @@ public class HpScript : MonoBehaviour
         hpText.text = "HP: " + currentHp;
 
         damagedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineDamaged");
+        music = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BackgroundMusic");
+        music.start();
+        music.setParameterByName("HealthST1", 0f);
+        music.setParameterByName("HealthST2", 0f);
+    }
+
+
+
+    private void Update()
+    {
+        tempST1Vol = Mathf.Lerp(tempST1Vol, ST1TargetVol, musicSwitchSpeed * Time.deltaTime);
+        tempST2Vol = Mathf.Lerp(tempST2Vol, ST2TargetVol, musicSwitchSpeed * Time.deltaTime);
+
+        music.setParameterByName("HealthST1", tempST1Vol);
+        music.setParameterByName("HealthST2", tempST2Vol);
     }
 
 
@@ -46,14 +69,25 @@ public class HpScript : MonoBehaviour
             //update hud
             hpText.text = "HP: " + currentHp;
 
-            if(currentHp == 1){
+            if(currentHp == 2){
+                ST1TargetVol = 1f;
+                ST2TargetVol = 0f;
+            }
+            else if(currentHp == 1){
                 damagedSound.start();
-            }else{
+                ST1TargetVol = 1f;
+                ST2TargetVol = 1f;
+            }
+            else{
                 damagedSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                ST1TargetVol = 0f;
+                ST2TargetVol = 0f;
             }
 
             if (currentHp <= 0){ //if hp is below or equal to 0, the player died
                 hpText.text = "HP: X";
+
+                music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 onDeath?.Invoke();
             }
 

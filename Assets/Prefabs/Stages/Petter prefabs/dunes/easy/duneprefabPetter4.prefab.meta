@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Stages/Petter prefabs/dunes/easy/duneprefabPetter4.prefab.meta
 guid: 943e406ba06933642870e5f83bffc480
+========
+guid: 0db018056b540fb44b01f5d697ee6e86
+>>>>>>>> fad2ab0b3667cae3555e0b22a07bbb4b8c42c1af:Assets/Prefabs/Dunes_variations/Dunes_001.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
