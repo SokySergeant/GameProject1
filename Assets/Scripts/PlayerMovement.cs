@@ -28,8 +28,19 @@ public class PlayerMovement : MonoBehaviour
 
     private FMOD.Studio.EventInstance solarEngine;
     public FMOD.Studio.EventInstance hoverEngine;
+    private FMOD.Studio.EventInstance windHorizontalSound;
+    private FMOD.Studio.EventInstance chargingSound;
 
     private Animator animator;
+
+    private float tempRpm;
+    public float engineRampupSpeed = 0.5f;
+
+    private float tempHorizontalRpm;
+    public float engineHorizontalRampupSpeed = 0.5f;
+
+    private float tempWindHorizontal = 0.5f;
+    public float windHorizontalRampupSpeed = 0.5f;
 
 
     private void Awake()
@@ -45,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
 
         solarEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/SolarPowerFly");
 
+        windHorizontalSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Wind/WindMove");
+        windHorizontalSound.setParameterByName("WindLR", 0.5f);
+
+        chargingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineCharging");
+
     }
 
     private void FixedUpdate()
@@ -56,7 +72,13 @@ public class PlayerMovement : MonoBehaviour
         if(flying && currentEnergy > 0f){
             velocity = new Vector3(velocity.x, flyingSpeed, velocity.z);
             currentEnergy -= energyFlyingUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
-        }else{
+
+            //engine sound ramping
+            tempRpm += engineRampupSpeed * Time.fixedDeltaTime;
+            tempRpm = Mathf.Clamp(tempRpm, 0f, 1f);
+            solarEngine.setParameterByName("RPM SP", tempRpm);
+        }
+        else{
             velocity = gravity * currentFallingSpeed; //constant gravity to act like gliding
             solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
@@ -67,12 +89,24 @@ public class PlayerMovement : MonoBehaviour
 
 
         if(horizontalInput.x != 0f){
-            hoverEngine.setParameterByName("RPM", 1f);
-            
-        }else{
-            hoverEngine.setParameterByName("RPM", 0.8f);
-           
+            tempHorizontalRpm += engineHorizontalRampupSpeed * Time.fixedDeltaTime;
         }
+        else{
+            tempHorizontalRpm -= engineHorizontalRampupSpeed * Time.fixedDeltaTime;
+        }
+        //horizontal sound
+        tempHorizontalRpm = Mathf.Clamp(tempHorizontalRpm, 0.8f, 1f);
+        hoverEngine.setParameterByName("RPM", tempHorizontalRpm);
+
+        if (horizontalInput.x > 0f) {
+            tempWindHorizontal += windHorizontalRampupSpeed * Time.fixedDeltaTime;
+        } else if (horizontalInput.x < 0f) {
+            tempWindHorizontal -= windHorizontalRampupSpeed * Time.fixedDeltaTime;
+        } else{
+            tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, 0.5f, windHorizontalRampupSpeed * 10f * Time.fixedDeltaTime);
+        }
+        tempWindHorizontal = Mathf.Clamp(tempWindHorizontal, 0f, 1f);
+        windHorizontalSound.setParameterByName("WindLR", tempWindHorizontal);
 
         //constantly deleting energy 
         currentEnergy -= energyDepletionRate * Time.fixedDeltaTime;
@@ -96,6 +130,12 @@ public class PlayerMovement : MonoBehaviour
     //get horizontal input
     public void OnMove(InputAction.CallbackContext input){
         horizontalInput = input.ReadValue<Vector2>();
+
+        if (input.started){
+            windHorizontalSound.start();
+            tempWindHorizontal = 0.5f;
+            windHorizontalSound.setParameterByName("WindLR", 0.5f);
+        }
     }
 
 
@@ -107,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(input.started && currentEnergy > 0f){
             solarEngine.start();
-            solarEngine.setParameterByName("RPM SP", 0.2f);
+            tempRpm = 0.2f;
         }else if(input.canceled && currentEnergy > 0f){
             solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
@@ -136,10 +176,27 @@ public class PlayerMovement : MonoBehaviour
                 if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){ //check if nothing is obstructing the space between the lightsource and player, meaning nothing is creating shade
                     currentEnergy += energyFlyingUsage * Time.fixedDeltaTime;
                     currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy); //clamp currentEnergy so it doesn't go above max
+
+                    //charging sound
+                    FMOD.Studio.PLAYBACK_STATE state;
+                    chargingSound.getPlaybackState(out state);
+                    if (state != FMOD.Studio.PLAYBACK_STATE.PLAYING){
+                        chargingSound.start();
+                    }
                 }
+            }else{
+                chargingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
 
+            
 
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other){
+        if (other.gameObject.layer == LayerMask.NameToLayer("Light")){
+            chargingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
