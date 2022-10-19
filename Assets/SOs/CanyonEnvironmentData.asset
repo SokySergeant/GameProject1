@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7654cfea1761774428114a9cc91f962f, type: 3}
+  m_Name: CanyonEnvironmentData
+  m_EditorClassIdentifier: 
+  Name: Environment
+  EntrySegment: {fileID: 1932954049698535613, guid: 184a5c7c8de869140ba91a8a041e947b, type: 3}
+  ExitSegment: {fileID: 4437919716242077617, guid: d14cb3b87b1d3df4881049c5a2c5d860, type: 3}
+  SegmentProfiles:
+  - Prefab: {fileID: 216042111177793982, guid: 0d405ffd7270cb145a50bdd7184cff34, type: 3}
+    Segment: {fileID: 1667540688096791623, guid: 0d405ffd7270cb145a50bdd7184cff34, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 319934865699455070, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
+    Segment: {fileID: 8957927746514673604, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 723242355762581452, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Segment: {fileID: 2293101160916902453, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 723242355762581452, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Segment: {fileID: 2293101160916902453, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 5024058998028542506, guid: 88936912c3b2ba94e9595bf0333c3d88, type: 3}
+    Segment: {fileID: 5792413374106734547, guid: 88936912c3b2ba94e9595bf0333c3d88, type: 3}
+    Weight: 1
+  WeightSum: 5
+  WeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2
+      value: 2
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3
+      value: 3
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 4
+      value: 4
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 5
+      value: 4
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
