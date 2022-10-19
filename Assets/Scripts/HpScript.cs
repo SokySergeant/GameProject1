@@ -19,11 +19,15 @@ public class HpScript : MonoBehaviour
     private bool invulnerable = false;
     public float invulnerabilityTime = 1.5f;
 
+    private FMOD.Studio.EventInstance damagedSound;
+
 
     void Awake()
     {
         currentHp = maxHp;
         hpText.text = "HP: " + currentHp;
+
+        damagedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineDamaged");
     }
 
 
@@ -41,7 +45,18 @@ public class HpScript : MonoBehaviour
 
             //update hud
             hpText.text = "HP: " + currentHp;
-            
+
+            if(currentHp == 1){
+                damagedSound.start();
+            }else{
+                damagedSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            }
+
+            if (currentHp <= 0){ //if hp is below or equal to 0, the player died
+                hpText.text = "HP: X";
+                onDeath?.Invoke();
+            }
+
             if (hp < 0){ //if the given hp is below 0, the player is taking damage
                 onHit?.Invoke();
                 invulnerable = true;
@@ -51,10 +66,6 @@ public class HpScript : MonoBehaviour
                 yield return null;
             }
 
-            if(currentHp <= 0){ //if hp is below or equal to 0, the player died
-                hpText.text = "HP: X";
-                onDeath?.Invoke();
-            }
         }
     }
     

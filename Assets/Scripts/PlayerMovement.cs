@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public FMOD.Studio.EventInstance hoverEngine;
     private FMOD.Studio.EventInstance windHorizontalSound;
     private FMOD.Studio.EventInstance chargingSound;
+    private FMOD.Studio.EventInstance fallingSound;
 
     private Animator animator;
 
@@ -41,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float tempWindHorizontal = 0.5f;
     public float windHorizontalRampupSpeed = 0.5f;
+
+    private float tempFallingSoundVol = 0f;
+    public float fallingSoundVolRampupSpeed = 0.5f;
 
 
     private void Awake()
@@ -61,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
 
         chargingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineCharging");
 
+        fallingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Wind/WindFlying");
+        fallingSound.start();
+        fallingSound.setParameterByName("WindFlyVol", 0f);
+
     }
 
     private void FixedUpdate()
@@ -77,11 +85,25 @@ public class PlayerMovement : MonoBehaviour
             tempRpm += engineRampupSpeed * Time.fixedDeltaTime;
             tempRpm = Mathf.Clamp(tempRpm, 0f, 1f);
             solarEngine.setParameterByName("RPM SP", tempRpm);
+
+            //tempFallingSoundVol += fallingSoundVolRampupSpeed * Time.fixedDeltaTime;
         }
         else{
             velocity = gravity * currentFallingSpeed; //constant gravity to act like gliding
             solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            if (!controller.isGrounded){
+                //tempFallingSoundVol -= fallingSoundVolRampupSpeed * Time.fixedDeltaTime;
+            }else{
+                //tempFallingSoundVol += fallingSoundVolRampupSpeed * Time.fixedDeltaTime;
+            }
+                
         }
+        //tempFallingSoundVol = Mathf.Clamp(tempFallingSoundVol, 0f, 1f);
+        //fallingSound.setParameterByName("WindFlyVol", tempFallingSoundVol);
+        float temp = 0f;
+        fallingSound.getParameterByName("WindFlyVol", out temp);
+        Debug.Log(temp);
 
         moveVector = new Vector3(horizontalInput.x, 0f, 0f);
 
