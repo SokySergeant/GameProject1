@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7654cfea1761774428114a9cc91f962f, type: 3}
-  m_Name: EnvironmentData
+  m_Name: DuneEnvironmentData 1
   m_EditorClassIdentifier: 
   Name: Environment
   EntrySegment: {fileID: 1932954049698535613, guid: 184a5c7c8de869140ba91a8a041e947b, type: 3}
@@ -22,7 +22,16 @@ MonoBehaviour:
   - Prefab: {fileID: 319934865699455070, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
     Segment: {fileID: 8957927746514673604, guid: 1b4084f2a8893d348a0f604700fb1525, type: 3}
     Weight: 1
-  WeightSum: 2
+  - Prefab: {fileID: 3849505227034453893, guid: 20847b882faea24439623b265888ec8a, type: 3}
+    Segment: {fileID: 2357619938231306876, guid: 20847b882faea24439623b265888ec8a, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 723242355762581452, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Segment: {fileID: 2293101160916902453, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 5024058998028542506, guid: 88936912c3b2ba94e9595bf0333c3d88, type: 3}
+    Segment: {fileID: 5792413374106734547, guid: 88936912c3b2ba94e9595bf0333c3d88, type: 3}
+    Weight: 1
+  WeightSum: 5
   WeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -46,7 +55,34 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 2
-      value: 1
+      value: 2
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3
+      value: 3
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 4
+      value: 4
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 5
+      value: 4
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
