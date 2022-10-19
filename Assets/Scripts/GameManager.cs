@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
         _segmentManager.AppendSegment();
         
-        //whenever the player enters a new section, spawn another section ahead of it and delete the previous one
+        //events
         HpScript.onHit += OnHit;
         HpScript.onDeath += OnDeath;
 
@@ -50,16 +50,13 @@ public class GameManager : MonoBehaviour
         }
 
         if(playerMovement.flying){
-            Debug.Log(playerMovement, playerMovement);
             scrollSpeedMultiplier = 1f;
-        }else{
+        }else if(!playerMovement.controller.isGrounded){ //only speed up player if they're falling and not touching ground
             scrollSpeedMultiplier = fallingSpeedMultiplier;
         }
 
-
         //move sections
-        if(canScroll)
-        {
+        if(canScroll){
             Vector3 moveVector = new Vector3(0f, 0f, scrollSpeed * scrollSpeedMultiplier * Time.deltaTime);
             _segmentManager.MoveSegments(-moveVector);
         }

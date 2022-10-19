@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 15f;
-    public float jumpPower = 10f;
+    public float flyingSpeed = 10f;
+    public float fallingSpeed = 1f;
+    private float currentFallingSpeed;
+    public float fallingSpeedOnDownHold = 2f;
     public Vector2 horizontalInput;
 
-    private CharacterController controller;
+    [HideInInspector] public CharacterController controller;
 
     Vector3 velocity;
     Vector3 moveVector;
@@ -33,7 +36,9 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+
         currentEnergy = maxEnergy;
+        currentFallingSpeed = fallingSpeed;
 
         hoverEngine = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineState");
         hoverEngine.start();
@@ -47,11 +52,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
 
+        //flying
         if(flying && currentEnergy > 0f){
-            velocity = new Vector3(velocity.x, jumpPower, velocity.z);
+            velocity = new Vector3(velocity.x, flyingSpeed, velocity.z);
             currentEnergy -= energyFlyingUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
         }else{
-            velocity = gravity; //constant gravity to act like gliding
+            velocity = gravity * currentFallingSpeed; //constant gravity to act like gliding
             solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
@@ -104,6 +110,19 @@ public class PlayerMovement : MonoBehaviour
             solarEngine.setParameterByName("RPM SP", 0.2f);
         }else if(input.canceled && currentEnergy > 0f){
             solarEngine.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
+
+
+    public void OnFall(InputAction.CallbackContext input){
+        Debug.Log("test");
+        if(input.started){
+            Debug.Log("start");
+            currentFallingSpeed = fallingSpeedOnDownHold;
+        }else if(input.canceled){
+            Debug.Log("end");
+            currentFallingSpeed = fallingSpeed;
         }
     }
 
