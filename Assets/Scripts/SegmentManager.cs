@@ -1,22 +1,26 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class SegmentManager : MonoBehaviour
 {
     [SerializeField] [Min(1)] private int _prewarmCount = 1;
+    //[SerializeField] [Min(1)] private float _prewarmDistance = 200f;
     [SerializeField] private GameObject _spawnSegmentPrefab;
-    [SerializeField] private EnvironmentData[] _environments;
-
-    [NonSerialized] public int EnvironmentIndex;
+    [SerializeField] private EnvironmentProfile[] _environmentProfiles;
 
     public static event Action<Vector3> OnMoveSegments;
 
+    [NonSerialized] public int EnvironmentIndex;
+
     private List<Segment> _activeSegments = new List<Segment>();
 
+    private SegmentManagerState _managerState;
+
+    private bool _finalEnvironment;
+    
     private Segment _currentSegment;
+
     public Segment CurrentSegment
     {
         get => _currentSegment;
@@ -26,11 +30,28 @@ public class SegmentManager : MonoBehaviour
             PrewarmSegment(_currentSegment);
         }
     }
-
-    public EnvironmentData CurrentEnvironment => _environments[EnvironmentIndex];
     
     public float DistanceGenerated { get; private set; }
+    public float DistanceSinceEnvironmentStart { get; private set; }
+    public float SegmentsPassed { get; private set; }
+    public float EnvironmentsPassed { get; private set; }
+    
+    public EnvironmentData CurrentEnvironment => _environmentProfiles[EnvironmentIndex].Environment;
 
+    [Serializable]
+    public class EnvironmentProfile
+    {
+        public EnvironmentData Environment;
+        [Min(0f)] public float Length = 1000f;
+    }
+
+    public enum SegmentManagerState
+    {
+        Enter,
+        Repeat,
+        Exit
+    }
+    
     private void Awake()
     {
         SegmentTrigger.OnSegmentEnter += OnSegmentEnter;
@@ -41,15 +62,14 @@ public class SegmentManager : MonoBehaviour
         SegmentTrigger.OnSegmentEnter -= OnSegmentEnter;
     }
 
-    int segmentsPassed = -1;
     private void OnSegmentEnter(Segment segment)
     {
-        Debug.Log("Segment: " + ++segmentsPassed);
         Segment oldSegment = CurrentSegment;
         CurrentSegment = segment;
         
         if (oldSegment != null)
         {
+            SegmentsPassed++;
             RemoveSegment(oldSegment);
         }
     }
@@ -61,7 +81,39 @@ public class SegmentManager : MonoBehaviour
 
     public Segment AppendSegment()
     {
-        Segment segment = _activeSegments.Count <= 0 ? _spawnSegmentPrefab.GetComponent<Segment>() : CurrentEnvironment.RandomSegment();
+        Segment segment;
+        if (_activeSegments.Count <= 0)
+            segment = _spawnSegmentPrefab.GetComponent<Segment>();
+        else
+            switch (_managerState) // whaaaat iiiis thiiiis
+            {
+                case SegmentManagerState.Enter:
+                    _managerState = DistanceSinceEnvironmentStart >= _environmentProfiles[EnvironmentIndex].Length ? SegmentManagerState.Exit : SegmentManagerState.Repeat;
+                    
+                    segment = CurrentEnvironment.EntrySegment ? CurrentEnvironment.EntrySegment : CurrentEnvironment.RandomSegment();
+                    //DistanceSinceEnvironmentStart -= environmentLength;
+                    DistanceSinceEnvironmentStart = 0f; // Make sure overlap doesn't make the next environment shorter.
+                    break;
+
+                case SegmentManagerState.Exit:
+                    _managerState = SegmentManagerState.Enter;
+                    
+                    segment = CurrentEnvironment.ExitSegment ? CurrentEnvironment.ExitSegment : CurrentEnvironment.RandomSegment();
+                    if (++EnvironmentIndex >= _environmentProfiles.Length)
+                    {
+                        EnvironmentIndex = _environmentProfiles.Length - 1;
+                        _finalEnvironment = true;
+                    }
+                    break;
+
+                default:
+                    if (!_finalEnvironment && DistanceSinceEnvironmentStart >= _environmentProfiles[EnvironmentIndex].Length)
+                        _managerState = SegmentManagerState.Exit;
+                    
+                    segment = CurrentEnvironment.RandomSegment();
+                    break;
+            }
+
         return AppendSegment(segment);
     }
 
@@ -91,6 +143,9 @@ public class SegmentManager : MonoBehaviour
 
             ConnectSegments(lastSegment, newSegment);
         }
+
+        DistanceGenerated += newSegment.Length;
+        DistanceSinceEnvironmentStart += newSegment.Length;
 
         _activeSegments.Add(newSegment);
 
@@ -136,7 +191,6 @@ public class SegmentManager : MonoBehaviour
                 continue;
             }
 
-            Debug.Log("Adding another segment.");
             nextSegment = AppendSegment();
         }
     }
