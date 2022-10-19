@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5420864237187888572}
   - component: {fileID: 6841448381658330068}
   - component: {fileID: 2808318806200527452}
-  - component: {fileID: 7965602153965338149}
   m_Layer: 0
   m_Name: BezierCurve.002
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7965602153965338149
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179876751748204392}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.29763857, y: 2.6885226, z: 12.750458}
-  m_Center: {x: 0.05532196, y: -1.2878207, z: 6.4673767}
 --- !u!1 &2800225934794700883
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +92,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3285294608815645417}
+  - component: {fileID: 2658917439448862252}
+  - component: {fileID: 8791824449154519702}
   m_Layer: 0
   m_Name: cords
   m_TagString: Untagged
@@ -133,6 +121,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2658917439448862252
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800225934794700883}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4221287, y: 2.7772074, z: 11.482117}
+  m_Center: {x: 1.1149836, y: -1.316999, z: 6.1707}
+--- !u!114 &8791824449154519702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800225934794700883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd8ef3c1c97d8c4fa6c95e19060f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &5243860799465488420
 GameObject:
   m_ObjectHideFlags: 0
