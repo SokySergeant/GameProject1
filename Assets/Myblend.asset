@@ -45,7 +45,7 @@ MonoBehaviour:
   - m_From: CM PlayerCam
     m_To: CM PlayerAscendCam
     m_Blend:
-      m_Style: 3
+      m_Style: 2
       m_Time: 5
       m_CustomCurve:
         serializedVersion: 2
@@ -56,7 +56,7 @@ MonoBehaviour:
   - m_From: CM PlayerZoomCam
     m_To: CM PlayerAscendCam
     m_Blend:
-      m_Style: 3
+      m_Style: 2
       m_Time: 5
       m_CustomCurve:
         serializedVersion: 2
@@ -68,7 +68,7 @@ MonoBehaviour:
     m_To: CM PlayerCam
     m_Blend:
       m_Style: 5
-      m_Time: 2.5
+      m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

@@ -13,15 +13,6 @@ public class BetterCameraControllerScript : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera playerAscendCam;
     [SerializeField] private GameObject playerObject;
 
-    
-    /*public float zoomIncrementDelay = .01f;
-    public float unzoomIncrementDelay = .01f;
-    public float zoomVelocity = 20f;
-    public float unzoomVelocity = 15f;
-    public float zoomMultiplier = 1.1f;
-    */
-
-    //private Rigidbody myRB;
     public static bool zoomOn = false;
     private List<CinemachineVirtualCamera> allMyCams = new List<CinemachineVirtualCamera> ();
     private Keyboard mykeyboprad;
