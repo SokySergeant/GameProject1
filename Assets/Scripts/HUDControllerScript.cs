@@ -10,6 +10,8 @@ public class HUDControllerScript : MonoBehaviour
     [SerializeField] private TMP_Text distanceText;
     [SerializeField] private TMP_Text highScoreText;
 
+    [SerializeField] private TMP_Text debugText;
+
     public float distanceUnit = 1f;
     public float highScore = 100f;
 
@@ -22,11 +24,14 @@ public class HUDControllerScript : MonoBehaviour
     {
         startZ = spawnSegmentObject.transform.position.z;
         distanceText.text = "Score: " + Mathf.RoundToInt(spawnSegmentObject.transform.position.z - startZ).ToString();
+        debugText.text = BetterCameraControllerScript.currentPlayerY.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        debugText.text = "Altitude:" + BetterCameraControllerScript.currentPlayerY.ToString();
+
         distanceTravelled = -Mathf.RoundToInt(spawnSegmentObject.transform.position.z - startZ) * distanceUnit;
         distanceText.text = "Score: " + distanceTravelled.ToString();
         if(distanceTravelled > highScore)
