@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float scrollSpeedMultiplierOnHit = 0.6f;
 
     [HideInInspector] public GameObject player;
-    private PlayerMovement playerMovement;
+    [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public HpScript playerHp;
 
     private bool canScroll = true;
