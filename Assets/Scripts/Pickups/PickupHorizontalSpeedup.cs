@@ -8,6 +8,7 @@ public class PickupHorizontalSpeedup : PickupAbstract
 
     public override void DoPickupAction(GameManager gameManager){
         gameManager.playerMovement.playerSpeed += speedIncrease;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Objects/Pickups/PickupTech");
         Destroy(gameObject);
     }
 }

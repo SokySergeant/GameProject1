@@ -86,6 +86,8 @@ public class HpScript : MonoBehaviour
 
             if (currentHp <= 0){ //if hp is below or equal to 0, the player died
                 hpText.text = "HP: X";
+
+                music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 onDeath?.Invoke();
             }
 
