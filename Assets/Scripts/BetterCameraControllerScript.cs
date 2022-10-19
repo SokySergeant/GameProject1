@@ -16,7 +16,8 @@ public class BetterCameraControllerScript : MonoBehaviour
     public static bool zoomOn = false;
     private List<CinemachineVirtualCamera> allMyCams = new List<CinemachineVirtualCamera> ();
     private Keyboard mykeyboprad;
-    //private VerticalState currentVerticalState = VerticalState.Steady;
+
+    private bool currentHorizontalInput = false;
 
     public static float currentPlayerY = 0;
     
@@ -46,24 +47,34 @@ public class BetterCameraControllerScript : MonoBehaviour
         }
         */
 
+        if(playerObject.GetComponent<PlayerMovement>().horizontalInput.x != 0)
+        {
+            currentHorizontalInput = true;
+        } else
+        {
+            currentHorizontalInput = false;
+        }
         
 
     }
 
     private void FixedUpdate()
     {
-        if (playerObject.transform.position.y < currentPlayerY)
+        if (!currentHorizontalInput)
         {
-            SwitchToCamera(playerZoomCam);
-        } else if(playerObject.transform.position.y > currentPlayerY)
-        {
-            SwitchToCamera(playerAscendCam);
-        } else
-        {
-            SwitchToCamera(playerCam);
+            if (playerObject.transform.position.y < currentPlayerY)
+            {
+                SwitchToCamera(playerZoomCam);
+            }
+            else if (playerObject.transform.position.y > currentPlayerY)
+            {
+                SwitchToCamera(playerAscendCam);
+            }
+            else
+            {
+                SwitchToCamera(playerCam);
+            }
         }
-
-
         currentPlayerY = playerObject.transform.position.y;
     }
 
