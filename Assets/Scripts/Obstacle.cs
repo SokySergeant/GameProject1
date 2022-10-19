@@ -2,24 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : PickupAbstract
 {
+    public int damage = 1;
 
-    void Start()
-    {
-        
-    }
-
-
-
-    void Update()
-    {
-        
-    }
-
-
-
-    public void BlowUp(){
+    public override void DoPickupAction(GameManager gameManager){
+        gameManager.playerHp.ChangeHp(-damage);
         Destroy(gameObject);
     }
 }

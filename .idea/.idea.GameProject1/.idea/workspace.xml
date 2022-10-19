@@ -9,10 +9,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Discover.Launch.Via.Unity": "true"
+    "Discover.Launch.Via.Unity": "true",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Standalone Player.Standalone Player">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../OneDrive - Change Maker Education/Desktop/STUFF/Team09_Glowos\GameProject1.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
