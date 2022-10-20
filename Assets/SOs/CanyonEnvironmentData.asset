@@ -28,7 +28,10 @@ MonoBehaviour:
   - Prefab: {fileID: 7041772992351867334, guid: 32c74465b71c7b24292ddd74a29fc293, type: 3}
     Segment: {fileID: 8386447383177772095, guid: 32c74465b71c7b24292ddd74a29fc293, type: 3}
     Weight: 1
-  WeightSum: 4
+  - Prefab: {fileID: 741699323947601031, guid: 37c886dd58cde79408c72724da2da67e, type: 3}
+    Segment: {fileID: 2274539735093961086, guid: 37c886dd58cde79408c72724da2da67e, type: 3}
+    Weight: 1
+  WeightSum: 5
   WeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -70,7 +73,16 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 4
-      value: 3
+      value: 4
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 5
+      value: 4
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
