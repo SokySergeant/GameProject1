@@ -16,8 +16,8 @@ MonoBehaviour:
   EntrySegment: {fileID: 6677294178361318162, guid: b665655db35f2b84690fc08990a89a7e, type: 3}
   ExitSegment: {fileID: -1383163229960150273, guid: cd7b469e054522f4b8e38acaa968b3a8, type: 3}
   SegmentProfiles:
-  - Prefab: {fileID: 892588090382506570, guid: 11707dbec26ef3f4bbab38a180616fc7, type: 3}
-    Segment: {fileID: 1969490524429738504, guid: 11707dbec26ef3f4bbab38a180616fc7, type: 3}
+  - Prefab: {fileID: 7971739277430677579, guid: b61fad3b9dfdb6d41950ce73897a175d, type: 3}
+    Segment: {fileID: 4637780429952590910, guid: b61fad3b9dfdb6d41950ce73897a175d, type: 3}
     Weight: 1
   WeightSum: 1
   WeightCurve:
