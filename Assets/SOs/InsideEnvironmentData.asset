@@ -16,13 +16,10 @@ MonoBehaviour:
   EntrySegment: {fileID: 6677294178361318162, guid: b665655db35f2b84690fc08990a89a7e, type: 3}
   ExitSegment: {fileID: -1383163229960150273, guid: cd7b469e054522f4b8e38acaa968b3a8, type: 3}
   SegmentProfiles:
-  - Prefab: {fileID: 1919141766752241686, guid: 2e0d99a483701f640bfe4a7c92f59a45, type: 3}
-    Segment: {fileID: 1831178668348916735, guid: 2e0d99a483701f640bfe4a7c92f59a45, type: 3}
-    Weight: 1
   - Prefab: {fileID: 892588090382506570, guid: 11707dbec26ef3f4bbab38a180616fc7, type: 3}
     Segment: {fileID: 1969490524429738504, guid: 11707dbec26ef3f4bbab38a180616fc7, type: 3}
     Weight: 1
-  WeightSum: 2
+  WeightSum: 1
   WeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -37,16 +34,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: Infinity
-      outSlope: Infinity
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 2
-      value: 1
+      value: 0
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
