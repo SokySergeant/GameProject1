@@ -9,6 +9,8 @@ public class PickupEnergy : PickupAbstract
     private bool _hasAnimator;
     private Animator _animator;
 
+    public float energyGained = 50f;
+
     private void Start()
     {
         _hasAnimator = TryGetComponent(out _animator);
@@ -18,6 +20,8 @@ public class PickupEnergy : PickupAbstract
     }
 
     public override void DoPickupAction(GameManager gameManager){
+
+        gameManager.playerMovement.currentEnergy += energyGained;
 
         if (_hasAnimator)
         {
