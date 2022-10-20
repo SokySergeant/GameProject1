@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     public float fallingSoundVolRampupSpeed = 0.5f;
 
     private Animator animator;
+    public Material boardMat;
 
     
 
@@ -116,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
         
         // Visuals
         energyBar.value = currentEnergy / maxEnergy;
+        //Glowyness of board
+        boardMat.SetColor("_EmissionColor", new Color(0f, 13f, 191f) * (currentEnergy / maxEnergy));
         
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);

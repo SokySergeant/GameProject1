@@ -185,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86894912}
-  m_LocalRotation: {x: 0.08101051, y: -0.00000006287309, z: 0.000000005110177, w: 0.9967133}
+  m_LocalRotation: {x: 0.08101051, y: -0.00000006287039, z: 0.000000005109957, w: 0.9967133}
   m_LocalPosition: {x: 0, y: 5.2, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7954,6 +7954,7 @@ MonoBehaviour:
   horizontalEngineSoundRampupSpeed: 1
   windHorizontalRampupSpeed: 1
   fallingSoundVolRampupSpeed: 1
+  boardMat: {fileID: 2100000, guid: 708f8ceb9b1fa694a92ce719eb8f5a9e, type: 2}
 --- !u!114 &1908428077
 MonoBehaviour:
   m_ObjectHideFlags: 0
