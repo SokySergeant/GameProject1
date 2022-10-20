@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 15f;
-    public float flyingSpeed = 10f;
     public float fallingSpeed = 1f;
     public float ascendSpeed = 50f;
     public float ascendMaxSpeed = 10f;

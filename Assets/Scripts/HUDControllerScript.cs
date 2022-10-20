@@ -6,15 +6,13 @@ using TMPro;
 
 public class HUDControllerScript : MonoBehaviour
 {
-
     [SerializeField] private TMP_Text distanceText;
     [SerializeField] private TMP_Text highScoreText;
 
     public float scoreMultiplier = 10f;
 
     public float distanceUnit = 1f;
-    private float highScore = 100f;
-
+    [HideInInspector] public float highScore = 0f;
     private float distanceTravelled;
 
 
@@ -22,8 +20,7 @@ public class HUDControllerScript : MonoBehaviour
     void Awake()
     {
         distanceTravelled = 0f;
-
-        highScoreText.text = "HIGH SCORE: " + Mathf.Round(highScore).ToString();
+        highScore = 0f;
     }
 
 
@@ -39,11 +36,14 @@ public class HUDControllerScript : MonoBehaviour
         //set highscore
         if(distanceTravelled > highScore){
             highScore = distanceTravelled;
-
-            //show highscore on hud
-            highScoreText.text = "HIGH SCORE: " + Mathf.Round(highScore).ToString();
         }
+
+        //show highscore on hud
+            highScoreText.text = "HIGH SCORE: " + Mathf.Round(highScore).ToString();
 
         
     }
+
+
+
 }
