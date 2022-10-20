@@ -6,7 +6,7 @@ using TMPro;
 public class HpScript : MonoBehaviour
 {
     private int currentHp;
-    private int maxHp = 5;
+    public int maxHp = 15;
 
     public delegate void OnHit();
     public static event OnHit onHit;
@@ -42,7 +42,7 @@ public class HpScript : MonoBehaviour
         hpText.text = "HP: " + currentHp;
 
         damagedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineDamaged");
-        
+
         music = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BackgroundMusic");
         music.start();
         music.setParameterByName("HealthST1", 0f);
@@ -148,7 +148,7 @@ public class HpScript : MonoBehaviour
             hpOrbs[i] = tempOrb;
         }
     }
-    
+
 
 
     //empty events for next playthrough
@@ -157,5 +157,5 @@ public class HpScript : MonoBehaviour
         onDeath = null;
     }
 
-    
+
 }
