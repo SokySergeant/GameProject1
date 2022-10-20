@@ -305,6 +305,17 @@
                 },
                 {
                     "name": "",
+                    "id": "fec36319-6484-43ca-b684-9d16abae228c",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1a34b73a-1fb6-4497-b7a6-8d8c2bcce19a",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -340,6 +351,17 @@
                     "name": "",
                     "id": "78ca748c-fb1e-4667-bd5e-6a0ec5ba041d",
                     "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Fall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abb7148a-70f2-4373-b99a-b072cb4685b7",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
