@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 10
   maxScrollSpeed: 200
-  accelerationOverTime: 0.4
+  accelerationOverTime: 0
   fallingSpeedMultiplier: 2
   scrollSpeedMultiplierOnHit: 1
   player: {fileID: 1908428071}
