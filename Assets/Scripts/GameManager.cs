@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary; //formats data into binary
 
 public class GameManager : MonoBehaviour
 {
@@ -46,6 +48,9 @@ public class GameManager : MonoBehaviour
 
         //turn on score script
         scoreScript.enabled = true;
+        
+        //load highscore
+        LoadGame();
     }
 
 
@@ -95,6 +100,9 @@ public class GameManager : MonoBehaviour
     //on death button functions 
     public void Exit(){
         playerMovement.horizontalEngineSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+        SaveGame();
+
         SceneManager.LoadScene("MainMenu");
     }
     
@@ -116,6 +124,48 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
         }
         
+    }
+
+
+
+    //save game
+    public void SaveGame(){
+        string savePath = Application.persistentDataPath + "SaveFile.glowos";
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(savePath, FileMode.Create);
+
+        SaveData data = new SaveData(scoreScript);
+
+        formatter.Serialize(stream, data);
+
+        stream.Close();
+    }
+
+    //load game
+    public void LoadGame(){
+        SaveData data = GetLoadGame();
+        if(data != null){
+            scoreScript.highScore = data.highScore;
+        }
+    }
+
+    //get loaded data
+    public SaveData GetLoadGame(){
+        string savePath = Application.persistentDataPath + "SaveFile.glowos";
+
+        if(File.Exists(savePath)){
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(savePath, FileMode.Open);
+
+            SaveData data = formatter.Deserialize(stream) as SaveData;
+
+            stream.Close();
+
+            return data;
+        }else{
+            return null;
+        }
     }
 
 
