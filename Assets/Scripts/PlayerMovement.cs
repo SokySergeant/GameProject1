@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool flying;
     private bool falling = false;
 
-    private float currentEnergy;
+    [HideInInspector] public float currentEnergy;
     private float maxEnergy = 200f;
     public float energyFlyingUsage = 1f;
     public float energyDepletionRate = 20f;
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             targetFallingSoundVol = controller.isGrounded ? 0f : 1f;
         }
 
-        currentEnergy = Mathf.Max(currentEnergy, 0f); // Make sure to never go below 0.
+        currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
         
         moveVector = new Vector3(horizontalInput.x, 0f, 0f);
         
