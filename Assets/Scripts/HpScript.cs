@@ -101,6 +101,8 @@ public class HpScript : MonoBehaviour
                 ST2TargetVol = 0f;
             }
 
+            UpdateHealthOrbs();
+
             if (currentHp <= 0){ //if hp is below or equal to 0, the player died
                 hpText.text = "HP: X";
 
