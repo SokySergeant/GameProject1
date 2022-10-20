@@ -1429,7 +1429,7 @@ MonoBehaviour:
   playerCam: {fileID: 708872967}
   playerZoomCam: {fileID: 86894913}
   playerAscendCam: {fileID: 213021433}
-  playerObject: {fileID: 1908428071}
+  playerMovement: {fileID: 1908428076}
 --- !u!1 &673286231
 GameObject:
   m_ObjectHideFlags: 3
@@ -7946,6 +7946,7 @@ MonoBehaviour:
   fallingSpeedOnDownHold: 8
   horizontalInput: {x: 0, y: 0}
   controller: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
   flying: 0
   energyFlyingUsage: 15
   energyDepletionRate: 1
