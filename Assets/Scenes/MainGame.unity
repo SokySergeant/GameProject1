@@ -185,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86894912}
-  m_LocalRotation: {x: 0.08101051, y: -0.00000006287039, z: 0.000000005109957, w: 0.9967133}
+  m_LocalRotation: {x: 0.08101051, y: -0.00000006287861, z: 0.0000000051106253, w: 0.9967133}
   m_LocalPosition: {x: 0, y: 5.2, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7947,8 +7947,8 @@ MonoBehaviour:
   horizontalInput: {x: 0, y: 0}
   controller: {fileID: 0}
   flying: 0
-  energyFlyingUsage: 15
-  energyDepletionRate: 1
+  energyFlyingUsage: 40
+  energyDepletionRate: 10
   energyBar: {fileID: 873737989}
   verticalEngineSoundRampupSpeed: 1
   horizontalEngineSoundRampupSpeed: 1
