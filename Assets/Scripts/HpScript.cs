@@ -32,6 +32,7 @@ public class HpScript : MonoBehaviour
     public GameObject hpParent;
     public float hpRadius = 1f;
     private GameObject[] hpOrbs;
+    public float orbSize = 0.2f;
     public GameObject orbPrefab;
 
 
@@ -146,7 +147,7 @@ public class HpScript : MonoBehaviour
             //create orb
             GameObject tempOrb = Instantiate(orbPrefab, spawnPos, Quaternion.identity);
             tempOrb.transform.parent = hpParent.transform;
-            tempOrb.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            tempOrb.transform.localScale = new Vector3(orbSize, orbSize, orbSize);
             hpOrbs[i] = tempOrb;
         }
     }
