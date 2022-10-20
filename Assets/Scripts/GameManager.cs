@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SegmentManager _segmentManager;
 
+    public HUDControllerScript scoreScript;
+
+
+
     void Awake()
     {
         player = GameObject.Find("Player");
@@ -39,6 +43,9 @@ public class GameManager : MonoBehaviour
 
         //Reset time scale incase the user previously exited through the pause menu
         Time.timeScale = 1f;
+
+        //turn on score script
+        scoreScript.enabled = true;
     }
 
 
@@ -69,21 +76,30 @@ public class GameManager : MonoBehaviour
         scrollSpeed *= scrollSpeedMultiplierOnHit;
     }
 
+
+
     //stop movement on death
     private void OnDeath(){
         canScroll = false;
         playerMovement.enabled = false;
 
+        //stop increasing score
+        scoreScript.enabled = false;
+
         //show exit button
         exitBtn.SetActive(true);
     }
     
+
+
     //on death button functions 
     public void Exit(){
         playerMovement.horizontalEngineSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SceneManager.LoadScene("MainMenu");
     }
     
+
+
     //pause menu
     public void OnPause(InputAction.CallbackContext input){
         if(isPaused){

@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed = 15f;
     public float flyingSpeed = 10f;
     public float fallingSpeed = 1f;
+    public float ascendSpeed = 50f;
+    public float ascendMaxSpeed = 10f;
     private float currentFallingSpeed;
     public float fallingSpeedOnDownHold = 2f;
     public Vector2 horizontalInput;
@@ -81,95 +83,81 @@ public class PlayerMovement : MonoBehaviour
         fallingSound.setParameterByName("WindFlyVol", 0f);
     }
 
-
-
-    private void FixedUpdate()
+    private void Update()
     {
-        //gravity
+        // Physics and misc
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
-
-        //flying
-        if(flying && currentEnergy > 0f){
-            //adding upwards velocity
-            velocity = new Vector3(velocity.x, flyingSpeed, velocity.z);
-            currentEnergy -= energyFlyingUsage * Time.fixedDeltaTime; //lose energy whenever you fly upwards
-
-            //engine sound ramping
+        
+        currentEnergy -= energyDepletionRate * Time.fixedDeltaTime;
+        if (flying && currentEnergy > 0f)
+        {
+            currentEnergy -= energyFlyingUsage * Time.deltaTime; //lose energy whenever you fly upwards
+            
+            velocity += -gravityDir * (ascendSpeed * Time.deltaTime);
+            velocity = Vector3.ClampMagnitude(velocity, ascendMaxSpeed);
+            
             targetVerticalEngineRpm = 1f;
         }
-        else{ //not flying
-            velocity = gravity * currentFallingSpeed; //constant gravity to act like gliding
+        else
+        {
+            velocity += gravity * Time.deltaTime;
 
-            if(controller.isGrounded){ //not falling
-                targetFallingSoundVol = 0f;
-            }else{
-                targetFallingSoundVol = 1f;
-            }
+            targetFallingSoundVol = controller.isGrounded ? 0f : 1f;
         }
 
-        //getting left right movement
-        moveVector = new Vector3(horizontalInput.x, 0f, 0f);
-
-        //updating energy bar
-        energyBar.value = currentEnergy / maxEnergy;
-
-
-        //setting horizontal engine sound rpm targets
-        if(horizontalInput.x != 0f){
-            targetHorizontalEngineRpm = 1f;
-        }
-        else{
-            targetHorizontalEngineRpm = 0.8f;
-        }
+        currentEnergy = Mathf.Max(currentEnergy, 0f); // Make sure to never go below 0.
         
-
-        //setting wind sound targets
-        if(horizontalInput.x > 0f){
-            targetWindHorizontal = 1f;
-        }else if(horizontalInput.x < 0f){
-            targetWindHorizontal = 0f;
-        }else{
-            targetWindHorizontal = 0.5f;
-            tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, targetWindHorizontal, windHorizontalRampupSpeed * 10f * Time.fixedDeltaTime); //lerp here as well so the return to 0.5f is 10 times faster
-        }
-
-
-        //constantly depleting energy 
-        currentEnergy -= energyDepletionRate * Time.fixedDeltaTime;
-        if(currentEnergy <= 0f){
-            currentEnergy = 0f;
-        }
-
-
-        //animations parameters
+        moveVector = new Vector3(horizontalInput.x, 0f, 0f);
+        
+        controller.Move((velocity + moveVector * playerSpeed) * Time.deltaTime);
+        
+        // Visuals
+        energyBar.value = currentEnergy / maxEnergy;
+        
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);
         animator.SetBool("Grounded", controller.isGrounded);
-
-
-        //lerping temporary sound values
-        tempVerticalEngineRpm = Mathf.Lerp(tempVerticalEngineRpm, targetVerticalEngineRpm, verticalEngineSoundRampupSpeed * Time.fixedDeltaTime);
+        
+        // Audio
+        if (horizontalInput.x > 0f)
+        {
+            targetHorizontalEngineRpm = 1f;
+            targetWindHorizontal = 1f;
+        }
+        else if (horizontalInput.x < 0f)
+        {
+            targetHorizontalEngineRpm = 1f;
+            targetWindHorizontal = 0f;
+        }
+        else
+        {
+            targetHorizontalEngineRpm = 0.8f;
+            targetWindHorizontal = 0.5f;
+            tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, targetWindHorizontal, windHorizontalRampupSpeed * 10f * Time.deltaTime); //lerp here as well so the return to 0.5f is 10 times faster
+        }
+        
+        tempVerticalEngineRpm = Mathf.Lerp(tempVerticalEngineRpm, targetVerticalEngineRpm, verticalEngineSoundRampupSpeed * Time.deltaTime);
         verticalEngineSound.setParameterByName("RPM SP", tempVerticalEngineRpm);
 
-        tempHorizontalEngineRpm = Mathf.Lerp(tempHorizontalEngineRpm, targetHorizontalEngineRpm, horizontalEngineSoundRampupSpeed * Time.fixedDeltaTime);
+        tempHorizontalEngineRpm = Mathf.Lerp(tempHorizontalEngineRpm, targetHorizontalEngineRpm, horizontalEngineSoundRampupSpeed * Time.deltaTime);
         horizontalEngineSound.setParameterByName("RPM", tempHorizontalEngineRpm);
 
-        tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, targetWindHorizontal, windHorizontalRampupSpeed * Time.fixedDeltaTime);
+        tempWindHorizontal = Mathf.Lerp(tempWindHorizontal, targetWindHorizontal, windHorizontalRampupSpeed * Time.deltaTime);
         windHorizontalSound.setParameterByName("WindLR", tempWindHorizontal);
 
-        tempFallingSoundVol = Mathf.Lerp(tempFallingSoundVol, targetFallingSoundVol, fallingSoundVolRampupSpeed * Time.fixedDeltaTime);
+        tempFallingSoundVol = Mathf.Lerp(tempFallingSoundVol, targetFallingSoundVol, fallingSoundVolRampupSpeed * Time.deltaTime);
         fallingSound.setParameterByName("WindFlyVol", tempFallingSoundVol);
     }
 
-
-
-    private void Update()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        controller.Move((velocity + moveVector * playerSpeed) * Time.deltaTime); //this is here as opposed to in FixedUpdate for smoother movement
+        if (Vector3.Dot(velocity, hit.normal) < 0)
+        {
+            Vector3 flatVelocity = Vector3.ProjectOnPlane(velocity, hit.normal);
+            velocity = flatVelocity;
+        }
     }
-
-
 
     //get horizontal input
     public void OnMove(InputAction.CallbackContext input){

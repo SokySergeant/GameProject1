@@ -6,39 +6,44 @@ using TMPro;
 
 public class HUDControllerScript : MonoBehaviour
 {
-    public GameObject spawnSegmentObject;
+
     [SerializeField] private TMP_Text distanceText;
     [SerializeField] private TMP_Text highScoreText;
 
-    [SerializeField] private TMP_Text debugText;
+    public float scoreMultiplier = 10f;
 
     public float distanceUnit = 1f;
-    public float highScore = 100f;
+    private float highScore = 100f;
 
-    private float distanceTravelled = 0f;
-    private float startZ;
+    private float distanceTravelled;
 
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
-        startZ = spawnSegmentObject.transform.position.z;
-        distanceText.text = "Score: " + Mathf.RoundToInt(spawnSegmentObject.transform.position.z - startZ).ToString();
-        debugText.text = BetterCameraControllerScript.currentPlayerY.ToString();
+        distanceTravelled = 0f;
+
+        highScoreText.text = "HIGH SCORE: " + Mathf.Round(highScore).ToString();
     }
 
-    // Update is called once per frame
+
+
     void Update()
     {
-        debugText.text = "Altitude:" + BetterCameraControllerScript.currentPlayerY.ToString();
+        //increase score
+        distanceTravelled += Time.deltaTime * scoreMultiplier;
 
-        distanceTravelled = -Mathf.RoundToInt(spawnSegmentObject.transform.position.z - startZ) * distanceUnit;
-        distanceText.text = "SCORE: " + distanceTravelled.ToString();
-        if(distanceTravelled > highScore)
-        {
+        //show score on hud
+        distanceText.text = "SCORE: " + Mathf.Round(distanceTravelled).ToString();
+
+        //set highscore
+        if(distanceTravelled > highScore){
             highScore = distanceTravelled;
+
+            //show highscore on hud
+            highScoreText.text = "HIGH SCORE: " + Mathf.Round(highScore).ToString();
         }
 
-        highScoreText.text = "HIGH SCORE: " + highScore.ToString();
+        
     }
 }
