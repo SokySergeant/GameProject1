@@ -21,12 +21,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveVector;
 
     [HideInInspector] public bool flying;
+    private bool falling = false;
 
     private float currentEnergy;
     private float maxEnergy = 200f;
     public float energyFlyingUsage = 1f;
     public float energyDepletionRate = 20f;
     public Slider energyBar;
+    private float isDepletingMultiplier = -1f;
 
     private FMOD.Studio.EventInstance verticalEngineSound;
     private float tempVerticalEngineRpm = 0.2f;
@@ -89,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 gravity = Physics.gravity;
         Vector3 gravityDir = gravity.normalized;
         
-        currentEnergy -= energyDepletionRate * Time.fixedDeltaTime;
+        currentEnergy -= energyDepletionRate * Time.deltaTime * isDepletingMultiplier;
         if (flying && currentEnergy > 0f)
         {
             currentEnergy -= energyFlyingUsage * Time.deltaTime; //lose energy whenever you fly upwards
@@ -118,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);
         animator.SetBool("Grounded", controller.isGrounded);
+        animator.SetBool("Falling", falling);
         
         // Audio
         if (horizontalInput.x > 0f)
@@ -189,16 +192,20 @@ public class PlayerMovement : MonoBehaviour
     public void OnFall(InputAction.CallbackContext input){
         if(input.started){
             currentFallingSpeed = fallingSpeedOnDownHold;
+            falling = true;
         }else if(input.canceled){
             currentFallingSpeed = fallingSpeed;
+            falling = false;
         }
     }
 
 
 
     //gain energy in light
-    void OnTriggerStay(Collider other){
+    void OnTriggerEnter(Collider other){
         if(other.gameObject.layer == LayerMask.NameToLayer("Light")){ //if inside light
+
+            /*
             Vector3 lightSourcePos = other.transform.parent.transform.position; //get position of light source
             Vector3 dir = transform.position - lightSourcePos; //get vector from lightsource to player
 
@@ -218,9 +225,13 @@ public class PlayerMovement : MonoBehaviour
             }else{
                 chargingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
+            */
 
+            isDepletingMultiplier = -1f;
             
 
+        }else if(other.gameObject.layer == LayerMask.NameToLayer("Dark")){
+            isDepletingMultiplier = 1f;
         }
     }
 
