@@ -114,7 +114,6 @@
 		<property name="length">
 			<value>0.75</value>
 		</property>
-		<property name="name" />
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -189,6 +188,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{31ecefd7-f149-4e44-8d35-736508eb1840}">
 		<relationship name="effects">
+			<destination>{99a1984f-fede-4a9c-8765-2c7cee72e451}</destination>
 			<destination>{d6214653-d1bd-4e74-9231-50b39de50987}</destination>
 		</relationship>
 	</object>
@@ -261,6 +261,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{cdb04c36-d73e-47d9-9db4-79ff6bbd4b51}" />
+	<object class="GainEffect" id="{99a1984f-fede-4a9c-8765-2c7cee72e451}">
+		<property name="gain">
+			<value>2</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{d6214653-d1bd-4e74-9231-50b39de50987}" />
 	<object class="AutomationPoint" id="{64d821c1-be64-4b09-ac3e-8c39e4afaac4}">
 		<property name="position">
