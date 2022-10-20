@@ -6,7 +6,7 @@ using TMPro;
 public class HpScript : MonoBehaviour
 {
     private int currentHp;
-    private int maxHp = 15;
+    public int maxHp = 15;
 
     public delegate void OnHit();
     public static event OnHit onHit;
@@ -29,6 +29,13 @@ public class HpScript : MonoBehaviour
 
     public float musicSwitchSpeed = 5f;
 
+    public GameObject hpParent;
+    public float hpRadius = 1f;
+    private GameObject[] hpOrbs;
+    public float orbSize = 0.2f;
+    public GameObject orbPrefab;
+
+
 
     void Awake()
     {
@@ -36,11 +43,15 @@ public class HpScript : MonoBehaviour
         hpText.text = "HP: " + currentHp;
 
         damagedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineDamaged");
-        
+
         music = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BackgroundMusic");
         music.start();
         music.setParameterByName("HealthST1", 0f);
         music.setParameterByName("HealthST2", 0f);
+
+        //create health orbs
+        hpOrbs = new GameObject[currentHp];
+        UpdateHealthOrbs();
     }
 
 
@@ -53,6 +64,11 @@ public class HpScript : MonoBehaviour
 
         music.setParameterByName("HealthST1", tempST1Vol);
         music.setParameterByName("HealthST2", tempST2Vol);
+
+        //make orbs face player
+        for (int i = 0; i < hpOrbs.Length; i++){
+            hpOrbs[i].transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 5f));
+        }
     }
 
 
@@ -86,6 +102,8 @@ public class HpScript : MonoBehaviour
                 ST2TargetVol = 0f;
             }
 
+            UpdateHealthOrbs();
+
             if (currentHp <= 0){ //if hp is below or equal to 0, the player died
                 hpText.text = "HP: X";
 
@@ -103,7 +121,37 @@ public class HpScript : MonoBehaviour
 
         }
     }
-    
+
+
+
+    private void UpdateHealthOrbs(){
+        //reset orbs
+        for (int i = 0; i < hpOrbs.Length; i++){
+            if(hpOrbs[i] != null){
+                Destroy(hpOrbs[i]);
+            }
+        }
+
+        hpOrbs = new GameObject[currentHp];
+
+        //create orbs
+        for (int i = 0; i < currentHp; i++){
+
+            //get position in a circle, take into account how many orbs are supposed to be spawned
+            float radians = 2 * Mathf.PI / currentHp * i;
+            float vertical = Mathf.Sin(radians);
+            float horizontal = Mathf.Cos(radians);
+            Vector3 spawnDir = new Vector3(horizontal, 0f, vertical);
+            Vector3 spawnPos = hpParent.transform.position + spawnDir * hpRadius;
+
+            //create orb
+            GameObject tempOrb = Instantiate(orbPrefab, spawnPos, Quaternion.identity);
+            tempOrb.transform.parent = hpParent.transform;
+            tempOrb.transform.localScale = new Vector3(orbSize, orbSize, orbSize);
+            hpOrbs[i] = tempOrb;
+        }
+    }
+
 
 
     //empty events for next playthrough
@@ -112,5 +160,5 @@ public class HpScript : MonoBehaviour
         onDeath = null;
     }
 
-    
+
 }
