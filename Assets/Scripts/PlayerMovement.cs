@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public CharacterController controller;
 
-    Vector3 velocity;
-    Vector3 moveVector;
+    [HideInInspector] public Vector3 velocity;
+    private Vector3 moveVector;
 
     [HideInInspector] public bool flying;
     private bool falling = false;
