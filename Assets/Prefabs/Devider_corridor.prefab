@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 135309053872560769}
   - component: {fileID: 3913466771658036516}
   - component: {fileID: 1273280656111575534}
+  - component: {fileID: 8695610091822563884}
+  - component: {fileID: 8124009911502331305}
+  - component: {fileID: 5706899930426756010}
+  - component: {fileID: 935173395231693714}
   m_Layer: 0
   m_Name: Devider_corridor
   m_TagString: Untagged
@@ -83,3 +87,55 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8695610091822563884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768820803361275963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.2349672, z: 18}
+  m_Center: {x: -1, y: 0.6174836, z: 9}
+--- !u!65 &8124009911502331305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768820803361275963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 12, z: 2.3030853}
+  m_Center: {x: -1, y: 6, z: 16.803238}
+--- !u!65 &5706899930426756010
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768820803361275963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 12, z: 2.2962723}
+  m_Center: {x: -1, y: 6, z: 1.1481361}
+--- !u!65 &935173395231693714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768820803361275963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.0962563, z: 18}
+  m_Center: {x: -1, y: 11.3884945, z: 9}
