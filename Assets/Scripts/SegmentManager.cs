@@ -133,12 +133,13 @@ public class SegmentManager : MonoBehaviour
             Segment lastSegment = _activeSegments[_activeSegments.Count - 1];
 
             Vector3 worldExitPos = lastSegment.ExitPoint.position;
-            Vector3 localEntryPos = segment.EntryPoint.position;
             Vector3 localPrefabPos = segment.transform.position;
-            Vector3 worldPrefabPos = worldExitPos + localPrefabPos - localEntryPos;
-            Quaternion worldPrefabRot = lastSegment.ExitPoint.rotation;
+            Vector3 localEntryPos = segment.EntryPoint.position - localPrefabPos;
+            Quaternion undoRot = Quaternion.Inverse(segment.EntryPoint.rotation) * segment.transform.rotation;
+            Vector3 adjustedEntryPos = undoRot * localEntryPos;
+            Vector3 worldPrefabPos = worldExitPos - adjustedEntryPos;
 
-            GameObject newPrefab = Instantiate(segment.gameObject, worldPrefabPos, worldPrefabRot);
+            GameObject newPrefab = Instantiate(segment.gameObject, worldPrefabPos, undoRot);
             newSegment = newPrefab.GetComponent<Segment>();
 
             ConnectSegments(lastSegment, newSegment);
