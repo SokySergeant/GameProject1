@@ -14,8 +14,6 @@ public class HpScript : MonoBehaviour
     public delegate void OnDeath();
     public static event OnDeath onDeath;
 
-    public TextMeshProUGUI hpText;
-
     private bool invulnerable = false;
     public float invulnerabilityTime = 1.5f;
 
@@ -44,7 +42,6 @@ public class HpScript : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         currentHp = maxHp;
-        hpText.text = "HP: " + currentHp;
 
         damagedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Hoverboard/Engine/EngineDamaged");
 
@@ -88,9 +85,6 @@ public class HpScript : MonoBehaviour
             //make sure hp doesn't go above max or below 0
             currentHp = Mathf.Clamp(currentHp, 0, maxHp);
 
-            //update hud
-            hpText.text = "HP: " + currentHp;
-
             float tempRatio = (float)currentHp / (float)maxHp;
 
             if(tempRatio < 0.3f){
@@ -109,8 +103,6 @@ public class HpScript : MonoBehaviour
             UpdateHealthOrbs();
 
             if (currentHp <= 0){ //if hp is below or equal to 0, the player died
-                hpText.text = "HP: X";
-
                 music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 onDeath?.Invoke();
 

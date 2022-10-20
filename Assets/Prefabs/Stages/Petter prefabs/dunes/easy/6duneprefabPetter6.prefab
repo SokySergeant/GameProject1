@@ -3447,6 +3447,18 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2551170446622356744, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551170446622356744, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551170446622356744, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551170446622356744, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4
       objectReference: {fileID: 0}
@@ -3486,13 +3498,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551170446622356744, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2551170446622356747, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}
       propertyPath: m_Name
       value: PickupHorizontalSpeedup
       objectReference: {fileID: 0}
     - target: {fileID: 7722833650710016671, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 168150fe15009cb48a5e3cae8c84f4b4, type: 3}

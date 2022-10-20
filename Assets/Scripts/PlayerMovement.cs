@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private float maxEnergy = 200f;
     public float energyFlyingUsage = 1f;
     public float energyDepletionRate = 20f;
-    public Slider energyBar;
     private float isDepletingMultiplier = -1f;
 
     private FMOD.Studio.EventInstance verticalEngineSound;
@@ -46,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private FMOD.Studio.EventInstance chargingSound;
 
-    private FMOD.Studio.EventInstance fallingSound;
+    public FMOD.Studio.EventInstance fallingSound;
     private float tempFallingSoundVol = 0f;
     private float targetFallingSoundVol;
     public float fallingSoundVolRampupSpeed = 0.5f;
@@ -115,9 +114,8 @@ public class PlayerMovement : MonoBehaviour
         controller.Move((velocity + moveVector * playerSpeed) * Time.deltaTime);
         
         // Visuals
-        energyBar.value = currentEnergy / maxEnergy;
         //Glowiness of board
-        boardMat.SetColor("_EmissionColor", new Color(0f, 13f, 191f) * (currentEnergy / maxEnergy));
+        boardMat.SetColor("_EmissionColor", new Color(0f, 13f, 191f) * (currentEnergy / maxEnergy) * 0.5f);
         
         animator.SetBool("Flying", flying);
         animator.SetFloat("Horizontal", horizontalInput.x);

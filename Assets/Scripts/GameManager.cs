@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
     //on death button functions 
     public void Exit(){
         playerMovement.horizontalEngineSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        playerMovement.fallingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
         SaveGame();
 
