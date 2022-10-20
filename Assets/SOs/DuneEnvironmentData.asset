@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DuneEnvironmentData
   m_EditorClassIdentifier: 
   Name: Environment
-  EntrySegment: {fileID: 1932954049698535613, guid: 184a5c7c8de869140ba91a8a041e947b, type: 3}
+  EntrySegment: {fileID: 300140938204453644, guid: f75eb49a310f3b246a73c19c1c0ae19b, type: 3}
   ExitSegment: {fileID: 4437919716242077617, guid: d14cb3b87b1d3df4881049c5a2c5d860, type: 3}
   SegmentProfiles:
   - Prefab: {fileID: 4303329268120678180, guid: 22ee71011b755bb45938fd1b2e3e6f47, type: 3}
@@ -31,7 +31,13 @@ MonoBehaviour:
   - Prefab: {fileID: 9091432827000421532, guid: 69d956b4e015f0d4db3c8bf507935c1c, type: 3}
     Segment: {fileID: 7777861351349506405, guid: 69d956b4e015f0d4db3c8bf507935c1c, type: 3}
     Weight: 1
-  WeightSum: 5
+  - Prefab: {fileID: 585868644311503283, guid: c112b324a9311e7468e50bac8aa7dcca, type: 3}
+    Segment: {fileID: 2160230432245300298, guid: c112b324a9311e7468e50bac8aa7dcca, type: 3}
+    Weight: 1
+  - Prefab: {fileID: 792980042470592643, guid: 6b5cfbd500353074294377eab64acfca, type: 3}
+    Segment: {fileID: 2223363598760885626, guid: 6b5cfbd500353074294377eab64acfca, type: 3}
+    Weight: 1
+  WeightSum: 7
   WeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -82,7 +88,25 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 5
-      value: 4
+      value: 5
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 6
+      value: 6
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 7
+      value: 6
       inSlope: Infinity
       outSlope: Infinity
       tangentMode: 0
