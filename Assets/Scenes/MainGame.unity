@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 86894914}
   - component: {fileID: 86894913}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CM PlayerZoomCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86894912}
-  m_LocalRotation: {x: 0.08101051, y: -0.000000062878605, z: 0.0000000051106244, w: 0.9967133}
+  m_LocalRotation: {x: 0.08101051, y: -0.000000072064886, z: 0.000000005857264, w: 0.9967133}
   m_LocalPosition: {x: 0, y: 5.2, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -592,7 +592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 213021434}
   - component: {fileID: 213021433}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CM PlayerAscendCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,8 +644,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213021432}
-  m_LocalRotation: {x: 0.10535081, y: -1.8128098e-32, z: -3.3055395e-32, w: 0.99443513}
+<<<<<<< Updated upstream
+  m_LocalRotation: {x: 0.10535081, y: 1e-45, z: -0, w: 0.99443513}
   m_LocalPosition: {x: 0, y: 7, z: -7}
+=======
+  m_LocalRotation: {x: 0.08040388, y: -0.0000000012022802, z: 9.6981874e-11, w: 0.9967624}
+  m_LocalPosition: {x: 0, y: 7.51, z: -13.24}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6482,7 +6487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 708872968}
   - component: {fileID: 708872967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CM PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6569,7 +6574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807780767}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -2.4, y: -0.25, z: -0.22}
+  m_LocalPosition: {x: -1.333333, y: -0.25, z: -0.22000036}
   m_LocalScale: {x: 1.6666664, y: 1.6666667, z: 1.6666672}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7920,16 +7925,16 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.990566, g: 0.80752856, b: 0, a: 0}
-        key1: {r: 0.93333334, g: 0, b: 0.05795504, a: 1}
-        key2: {r: 0.4056604, g: 0, b: 0.056715995, a: 0}
+        key0: {r: 0.7311321, g: 0.95703024, b: 1, a: 0}
+        key1: {r: 0.28930813, g: 0.60480213, b: 1, a: 1}
+        key2: {r: 0.061001632, g: 0.0016019973, b: 0.33962262, a: 0}
         key3: {r: 0.3301887, g: 0.1980543, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 1542
-        ctime1: 21974
+        ctime0: 0
+        ctime1: 19661
         ctime2: 65535
         ctime3: 65535
         ctime4: 0
@@ -11818,7 +11823,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -12331,7 +12336,7 @@ PrefabInstance:
     - target: {fileID: 7171767083197057113, guid: e3d18995bd34b97489d53c96bea650c9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c830fc468fbaa4a4ca2f973c0046df79, type: 2}
+      objectReference: {fileID: 2100000, guid: 708f8ceb9b1fa694a92ce719eb8f5a9e, type: 2}
     - target: {fileID: 7313902023234761157, guid: e3d18995bd34b97489d53c96bea650c9, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -12375,7 +12380,7 @@ PrefabInstance:
     - target: {fileID: 7840031527083642650, guid: e3d18995bd34b97489d53c96bea650c9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c830fc468fbaa4a4ca2f973c0046df79, type: 2}
+      objectReference: {fileID: 2100000, guid: 708f8ceb9b1fa694a92ce719eb8f5a9e, type: 2}
     - target: {fileID: 7977321095058610270, guid: e3d18995bd34b97489d53c96bea650c9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -12463,7 +12468,7 @@ PrefabInstance:
     - target: {fileID: 9055907821841892770, guid: e3d18995bd34b97489d53c96bea650c9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c830fc468fbaa4a4ca2f973c0046df79, type: 2}
+      objectReference: {fileID: 2100000, guid: 708f8ceb9b1fa694a92ce719eb8f5a9e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3d18995bd34b97489d53c96bea650c9, type: 3}
 --- !u!1 &1279182076
@@ -12656,6 +12661,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1612250275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612250276}
+  - component: {fileID: 1612250277}
+  m_Layer: 0
+  m_Name: Hp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1612250276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612250275}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1908428075}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1612250277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612250275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330c70f30ee5581459d7d2a6b68041f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 100
 --- !u!1 &1908428071
 GameObject:
   m_ObjectHideFlags: 0
@@ -12691,6 +12741,7 @@ Transform:
   m_Children:
   - {fileID: 1142304664}
   - {fileID: 211227251}
+  - {fileID: 1612250276}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12896,6 +12947,15 @@ MonoBehaviour:
   hpText: {fileID: 844256855}
   invulnerabilityTime: 1.5
   musicSwitchSpeed: 20
+<<<<<<< Updated upstream
+  hpParent: {fileID: 1612250275}
+  hpRadius: 1
+  orbPrefab: {fileID: 205360313097477865, guid: c72abdeb023a01e47a766ec7bbef3c1f, type: 3}
+=======
+  hpParent: {fileID: 0}
+  hpRadius: 1
+  orbPrefab: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!54 &1908428080
 Rigidbody:
   m_ObjectHideFlags: 0
