@@ -35,10 +35,14 @@ public class HpScript : MonoBehaviour
     public float orbSize = 0.2f;
     public GameObject orbPrefab;
 
+    private Animator animator;
+
 
 
     void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         currentHp = maxHp;
         hpText.text = "HP: " + currentHp;
 
@@ -112,6 +116,8 @@ public class HpScript : MonoBehaviour
 
             }else if (hp < 0){ //if the given hp is below 0, the player is taking damage
                 onHit?.Invoke();
+                animator.SetTrigger("Hit");
+
                 invulnerable = true;
                 yield return new WaitForSeconds(invulnerabilityTime);
                 invulnerable = false;
