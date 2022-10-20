@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float fallingSpeed = 1f;
     public float ascendSpeed = 50f;
     public float ascendMaxSpeed = 10f;
-    private float currentFallingSpeed;
+    private float currentFallingSpeed = 1f;
     public float fallingSpeedOnDownHold = 2f;
     public Vector2 horizontalInput;
 
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            velocity += gravity * Time.deltaTime;
+            velocity += gravity * Time.deltaTime * currentFallingSpeed;
 
             targetFallingSoundVol = controller.isGrounded ? 0f : 1f;
         }
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
         
         // Visuals
         energyBar.value = currentEnergy / maxEnergy;
-        //Glowyness of board
+        //Glowiness of board
         boardMat.SetColor("_EmissionColor", new Color(0f, 13f, 191f) * (currentEnergy / maxEnergy));
         
         animator.SetBool("Flying", flying);
