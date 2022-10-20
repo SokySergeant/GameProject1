@@ -6,7 +6,7 @@ using TMPro;
 public class HpScript : MonoBehaviour
 {
     private int currentHp;
-    private int maxHp = 15;
+    public int maxHp = 15;
 
     public delegate void OnHit();
     public static event OnHit onHit;
