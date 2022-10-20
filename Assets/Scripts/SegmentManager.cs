@@ -173,11 +173,11 @@ public class SegmentManager : MonoBehaviour
             parentSegment = parentSegment.EntrySegment;
 
             _activeSegments.Remove(childSegment);
-            Destroy(childSegment.gameObject);
+            Destroy(childSegment.gameObject, 2f);
         }
 
         _activeSegments.Remove(parentSegment);
-        Destroy(parentSegment.gameObject);
+        Destroy(parentSegment.gameObject, 2f);
     }
 
     public void PrewarmSegment(Segment segment)

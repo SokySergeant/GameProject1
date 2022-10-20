@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 780080207610861469}
   - component: {fileID: 780080207610861468}
   - component: {fileID: 780080207610861467}
+  - component: {fileID: 3024335007288940980}
   m_Layer: 0
   m_Name: HealthPickup
   m_TagString: Untagged
@@ -111,6 +112,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527f991fef45c9e4fba3b1f5e2444344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3024335007288940980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780080207610861466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330c70f30ee5581459d7d2a6b68041f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 150
 --- !u!1001 &2290336116394706764
 PrefabInstance:
   m_ObjectHideFlags: 0
