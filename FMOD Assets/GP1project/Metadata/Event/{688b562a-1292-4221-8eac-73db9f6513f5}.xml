@@ -127,7 +127,7 @@
 	<object class="MixerBusFader" id="{ffbfa782-6552-4e53-a55b-4fd0913923f8}" />
 	<object class="SFXReverbEffect" id="{ddac5994-0773-46ac-bd22-9491fd309d75}">
 		<property name="wetLevel">
-			<value>-24.5</value>
+			<value>-19.5</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{800a8caf-7cda-44fe-a065-a0f564b4ec60}" />
