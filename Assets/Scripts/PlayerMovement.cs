@@ -22,7 +22,10 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool flying;
     private bool falling = false;
 
-    [HideInInspector] public float currentEnergy;
+    private bool canFly = true;
+    public float fatigueTime = 2f;
+
+    [ReadOnly] public float currentEnergy;
     private float maxEnergy = 200f;
     public float energyFlyingUsage = 1f;
     public float energyDepletionRate = 20f;
@@ -91,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 gravityDir = gravity.normalized;
         
         currentEnergy -= energyDepletionRate * Time.deltaTime * isDepletingMultiplier;
-        if (flying && currentEnergy > 0f)
+        if (canFly && flying && currentEnergy > 0f)
         {
             currentEnergy -= energyFlyingUsage * Time.deltaTime; //lose energy whenever you fly upwards
             
@@ -108,6 +111,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
+        if(canFly && currentEnergy == 0f){
+            StartCoroutine(FatigueTimer());
+        }
         
         moveVector = new Vector3(horizontalInput.x, 0f, 0f);
         
@@ -197,6 +203,14 @@ public class PlayerMovement : MonoBehaviour
             currentFallingSpeed = fallingSpeed;
             falling = false;
         }
+    }
+
+
+
+    private IEnumerator FatigueTimer(){
+        canFly = false;
+        yield return new WaitForSeconds(fatigueTime);
+        canFly = true;
     }
 
 

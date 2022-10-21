@@ -18,26 +18,26 @@ MonoBehaviour:
   SegmentProfiles:
   - Prefab: {fileID: 4303329268120678180, guid: 22ee71011b755bb45938fd1b2e3e6f47, type: 3}
     Segment: {fileID: 3342723599292023517, guid: 22ee71011b755bb45938fd1b2e3e6f47, type: 3}
-    Weight: 1
+    Weight: 0.796
   - Prefab: {fileID: 3849505227034453893, guid: 20847b882faea24439623b265888ec8a, type: 3}
     Segment: {fileID: 2357619938231306876, guid: 20847b882faea24439623b265888ec8a, type: 3}
-    Weight: 1
+    Weight: 0.791
   - Prefab: {fileID: 2435058842922914057, guid: f4279e3add18b9c43950f34a0b6cb459, type: 3}
     Segment: {fileID: 3751730837873900784, guid: f4279e3add18b9c43950f34a0b6cb459, type: 3}
-    Weight: 1
+    Weight: 0.791
   - Prefab: {fileID: 6984286204482839572, guid: 943e406ba06933642870e5f83bffc480, type: 3}
     Segment: {fileID: 8446194337458309613, guid: 943e406ba06933642870e5f83bffc480, type: 3}
-    Weight: 1
+    Weight: 0.786
   - Prefab: {fileID: 9091432827000421532, guid: 69d956b4e015f0d4db3c8bf507935c1c, type: 3}
     Segment: {fileID: 7777861351349506405, guid: 69d956b4e015f0d4db3c8bf507935c1c, type: 3}
-    Weight: 1
+    Weight: 0.805
   - Prefab: {fileID: 585868644311503283, guid: c112b324a9311e7468e50bac8aa7dcca, type: 3}
     Segment: {fileID: 2160230432245300298, guid: c112b324a9311e7468e50bac8aa7dcca, type: 3}
     Weight: 1
   - Prefab: {fileID: 792980042470592643, guid: 6b5cfbd500353074294377eab64acfca, type: 3}
     Segment: {fileID: 2223363598760885626, guid: 6b5cfbd500353074294377eab64acfca, type: 3}
     Weight: 1
-  WeightSum: 7
+  WeightSum: 5.969
   WeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -51,7 +51,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.796
       value: 1
       inSlope: Infinity
       outSlope: Infinity
@@ -60,7 +60,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 2
+      time: 1.587
       value: 2
       inSlope: Infinity
       outSlope: Infinity
@@ -69,7 +69,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 3
+      time: 2.378
       value: 3
       inSlope: Infinity
       outSlope: Infinity
@@ -78,7 +78,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 4
+      time: 3.164
       value: 4
       inSlope: Infinity
       outSlope: Infinity
@@ -87,7 +87,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 5
+      time: 3.969
       value: 5
       inSlope: Infinity
       outSlope: Infinity
@@ -96,7 +96,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 6
+      time: 4.969
       value: 6
       inSlope: Infinity
       outSlope: Infinity
@@ -105,7 +105,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 7
+      time: 5.969
       value: 6
       inSlope: Infinity
       outSlope: Infinity

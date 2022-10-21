@@ -18,20 +18,20 @@ MonoBehaviour:
   SegmentProfiles:
   - Prefab: {fileID: 723242355762581452, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
     Segment: {fileID: 2293101160916902453, guid: 8d510fba4f5c2ec4aba6e39581ebd845, type: 3}
-    Weight: 1
+    Weight: 0.815
   - Prefab: {fileID: 5024058998028542506, guid: 88936912c3b2ba94e9595bf0333c3d88, type: 3}
     Segment: {fileID: 5792413374106734547, guid: 88936912c3b2ba94e9595bf0333c3d88, type: 3}
-    Weight: 1
+    Weight: 0.815
   - Prefab: {fileID: 8680848168622133994, guid: ff6d8a1c347df1a40b8d2d65374158ae, type: 3}
     Segment: {fileID: 7900249598173691667, guid: ff6d8a1c347df1a40b8d2d65374158ae, type: 3}
-    Weight: 1
+    Weight: 0.815
   - Prefab: {fileID: 7041772992351867334, guid: 32c74465b71c7b24292ddd74a29fc293, type: 3}
     Segment: {fileID: 8386447383177772095, guid: 32c74465b71c7b24292ddd74a29fc293, type: 3}
-    Weight: 1
+    Weight: 0.781
   - Prefab: {fileID: 741699323947601031, guid: 37c886dd58cde79408c72724da2da67e, type: 3}
     Segment: {fileID: 2274539735093961086, guid: 37c886dd58cde79408c72724da2da67e, type: 3}
-    Weight: 1
-  WeightSum: 5
+    Weight: 0.815
+  WeightSum: 4.041
   WeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -45,7 +45,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.815
       value: 1
       inSlope: Infinity
       outSlope: Infinity
@@ -54,7 +54,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 2
+      time: 1.63
       value: 2
       inSlope: Infinity
       outSlope: Infinity
@@ -63,7 +63,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 3
+      time: 2.445
       value: 3
       inSlope: Infinity
       outSlope: Infinity
@@ -72,7 +72,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 4
+      time: 3.2259998
       value: 4
       inSlope: Infinity
       outSlope: Infinity
@@ -81,7 +81,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 5
+      time: 4.041
       value: 4
       inSlope: Infinity
       outSlope: Infinity
